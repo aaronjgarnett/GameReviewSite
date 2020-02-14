@@ -1,0 +1,212 @@
+.center {
+	margin-left: 10%;
+	width: 100%;
+	padding: 5px;
+}
+
+.login-block {
+	width: 360px;
+	padding: 20px;
+	background: #fff;
+	border-radius: 5px;
+	border: 5px solid #000000;
+	margin: 0 auto;
+}
+
+.login-block h1 {
+	text-align: center;
+	color: #000;
+	font-size: 18px;
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+
+.login-block input {
+	width: 100%;
+	height: 42px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	margin-bottom: 20px;
+	font-size: 14px;
+	padding: 0 20px 0 50px;
+	outline: none;
+}
+
+.login-block textarea {
+	width: 100%;
+	height: 42px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	font-size: 14px;
+	padding: 0 20px 0 10px;
+	outline: none;
+}
+
+textarea {
+	width: 100%;
+	height: 42px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	font-size: 14px;
+	padding: 0 20px 0 10px;
+	outline: none;
+}
+
+.login-block input#password {
+	background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top
+		no-repeat;
+	background-size: 16px 80px;
+}
+
+.login-block input#password:focus {
+	background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom
+		no-repeat;
+	background-size: 16px 80px;
+}
+
+.login-block input:active, .login-block input:focus {
+	border: 1px solid #ffcccc;
+}
+
+.login-block button {
+	width: 100%;
+	height: 40px;
+	background: #000000;
+	box-sizing: border-box;
+	border-radius: 5px;
+	border: 1px solid #000000;
+	color: #ffffff;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-family: Montserrat;
+	outline: none;
+	cursor: pointer;
+}
+
+.login-block button:hover {
+	background: #ccccff;
+}
+
+.grade {
+	width: 70px;
+	height: 40px;
+	background: #ff0000;
+	border-radius: 5px;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 28px;
+	text-align: center;
+	font-family: Montserrat;
+	outline: none;
+}
+
+input, textarea {
+	background-color: rgba(255, 255, 255, 0.6);
+}
+
+th {
+	text-align: center;
+}
+
+.review {
+	position: relative;
+	box-sizing: border-box;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	width: 640px;
+}
+
+.score {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	font-size: 1.5em;
+	border: 1px solid green;
+}
+
+.error {
+	text-align: center;
+	color: #f00;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+
+#score {
+	width: 10%;
+	height: 42px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	margin-bottom: 20px;
+	font-size: 14px;
+	padding: 0 20px 0 50px;
+	outline: none;
+}
+
+#submitReview {
+	width: 28%;
+	height: 40px;
+	background: #000000;
+	box-sizing: border-box;
+	border-radius: 5px;
+	border: 1px solid #000000;
+	color: #ffffff;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-family: Montserrat;
+	outline: none;
+	cursor: pointer;
+}
+
+#submitReview:hover {
+	background: #ccccff;
+}
+
+.tooltip {
+	position: relative;
+	display: inline-block;
+	border-bottom: 1px dotted black;
+	opacity: 1;
+}
+
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 200px;
+	background-color: #555;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 1;
+	bottom: 125%;
+	left: 50%;
+	margin-left: -60px;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+	opacity: 1;
+}
