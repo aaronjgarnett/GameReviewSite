@@ -1,8 +1,21 @@
+/*
+ * Filename: Genre.java
+ * author: Aaron Garnett
+ * date: 2/18/2020 original
+ * 
+ * */
 package com.arron.entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * The persistent class for the genre database table.
@@ -27,33 +40,63 @@ public class Genre implements Serializable {
 	public Genre() {
 	}
 
+	/**
+	 * @return id
+	 */
 	public int getId() {
 		return this.id;
 	}
 
+	/**
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return name
+	 */
 	public String getName() {
 		return this.name;
 	}
 
+	/**
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * @return games
+	 */
 	public List<Game> getGames() {
 		return this.games;
 	}
 
+	/**
+	 * @param games
+	 */
 	public void setGames(List<Game> games) {
 		this.games = games;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return name;
+		StringBuilder builder = new StringBuilder();
+		builder.append("Genre [id=");
+		builder.append(id);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", games=");
+		builder.append(games);
+		builder.append("]");
+		return builder.toString();
 	}
-
 }

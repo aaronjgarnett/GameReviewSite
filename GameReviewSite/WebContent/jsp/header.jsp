@@ -13,13 +13,14 @@
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
 <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" style="background-color: #258e3f;">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<span class="navbar-brand">Game Review Site</span>
+			<a class="navbar-brand color-me" href="IndexServlet" target="_top">Game
+				Review Site</a>
 		</div>
 		<ul class="nav navbar-nav">
-			<li><a href="IndexServlet" target="_top">Home </a></li>
+			<li><a  href="IndexServlet" target="_top">Home </a></li>
 			<li><a href="AboutServlet" target="_top">About </a></li>
 			<li><a href="ContactServlet" target="_top">Contact</a></li>
 		</ul>

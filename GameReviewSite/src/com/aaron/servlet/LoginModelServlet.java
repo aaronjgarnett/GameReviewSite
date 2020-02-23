@@ -1,3 +1,9 @@
+/*
+ * Filename: LoginModelServlet.java
+ * author: Aaron Garnett
+ * date: 2/18/2020 original
+ * 
+ * */
 package com.aaron.servlet;
 
 import java.io.IOException;
@@ -14,9 +20,8 @@ import com.aaron.service.UserService;
 import com.arron.entities.User;
 
 /**
- * @author aaron
+ * Servlet implementation class LoginModelServlet
  * 
- *         Servlet implementation class LoginModelServlet
  */
 @WebServlet("/LoginModelServlet")
 public class LoginModelServlet extends HttpServlet {
@@ -69,5 +74,4 @@ public class LoginModelServlet extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

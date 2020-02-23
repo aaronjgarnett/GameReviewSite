@@ -34,7 +34,8 @@
 					<div class="col-sm-2">
 						<div class="dropdown">
 							<button type="button" class="btn btn-primary dropdown-toggle"
-								data-toggle="dropdown">Browse by Genre</button>
+								data-toggle="dropdown" style="background-color: #258e3f;">Browse
+								by Genre</button>
 							<ul class="dropdown-menu">
 								<li><a href="IndexServlet">all</a></li>
 								<c:forEach items="${genres}" var="i">

@@ -1,3 +1,9 @@
+/*
+ * Filename: LoginServlet.java
+ * author: Aaron Garnett
+ * date: 2/18/2020 original
+ * 
+ * */
 package com.aaron.servlet;
 
 import java.io.IOException;
@@ -10,9 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author aaron
+ * Servlet implementation class LoginServlet
  * 
- *         Servlet implementation class LoginServlet
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -33,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getAttribute("loginError");
-		
+
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/jsp/login.jsp");
 		rd.forward(request, response);
 	}
@@ -47,5 +52,4 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

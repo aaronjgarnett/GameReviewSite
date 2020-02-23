@@ -1,3 +1,9 @@
+/*
+ * Filename: RegisterModelServlet.java
+ * author: Aaron Garnett
+ * date: 2/18/2020 original
+ * 
+ * */
 package com.aaron.servlet;
 
 import java.io.IOException;
@@ -14,9 +20,8 @@ import com.aaron.service.UserService;
 import com.arron.entities.User;
 
 /**
- * @author aaron
+ * Servlet implementation class RegisterModelServlet
  * 
- *         Servlet implementation class RegisterModelServlet
  */
 @WebServlet("/RegisterModelServlet")
 public class RegisterModelServlet extends HttpServlet {
@@ -72,5 +77,4 @@ public class RegisterModelServlet extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

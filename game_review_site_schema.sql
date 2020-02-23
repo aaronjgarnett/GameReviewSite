@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               10.4.8-MariaDB - mariadb.org binary distribution
+-- Server version:               10.4.11-MariaDB - mariadb.org binary distribution
 -- Server OS:                    Win64
 -- HeidiSQL Version:             10.2.0.5599
 -- --------------------------------------------------------
@@ -16,6 +16,19 @@
 CREATE DATABASE IF NOT EXISTS `case_study` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `case_study`;
 
+-- Dumping structure for table case_study.contact_message
+CREATE TABLE IF NOT EXISTS `contact_message` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `message` text NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table case_study.contact_message: ~0 rows (approximately)
+/*!40000 ALTER TABLE `contact_message` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contact_message` ENABLE KEYS */;
+
 -- Dumping structure for table case_study.game
 CREATE TABLE IF NOT EXISTS `game` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -28,10 +41,9 @@ CREATE TABLE IF NOT EXISTS `game` (
   PRIMARY KEY (`id`),
   KEY `FK_PUBLISH_P_ID` (`publisher`),
   CONSTRAINT `FK_PUBLISH_P_ID` FOREIGN KEY (`publisher`) REFERENCES `publishing_company` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=latin1;
 
--- Dumping data for table case_study.game: ~62 rows (approximately)
-DELETE FROM `game`;
+-- Dumping data for table case_study.game: ~114 rows (approximately)
 /*!40000 ALTER TABLE `game` DISABLE KEYS */;
 INSERT INTO `game` (`id`, `name`, `cover`, `date`, `description`, `aggregate_score`, `publisher`) VALUES
 	(1, 'Super Mario Odyssey', 'images/mario_odyssey.jpg', '2017-10-27', 'New Evolution of Mario Sandbox-Style Gameplay. Mario embarks on a new journey through unknown worlds, running and jumping through huge 3D worlds in the first sandbox-style Mario game since Super Mario 64 and Super Mario Sunshine. Set sail between expansive worlds aboard an airship, and perform all-new actions, such as throwing Mario\'s cap.', NULL, 1),
@@ -63,7 +75,7 @@ INSERT INTO `game` (`id`, `name`, `cover`, `date`, `description`, `aggregate_sco
 	(27, 'Gravity Rush 2', 'images/gravity_rush2.jpg', '2017-01-20', 'Prepare to fall through the skies as gravity kitten Kat masters a suite of new gravity-defying abilities and chases the mystery of her origin across a huge new open world.', NULL, 12),
 	(28, 'Firewall Zero Hour', 'images/firewall_zero.jpg', '2018-08-28', 'Choose from one of 12 contractors hired by anonymous contract handlers and work as a team to either protect or obtain valuable data, housed on a laptop and located in dangerous locations around the globe.', NULL, 7),
 	(29, 'Locoroco', 'images/locoroco.jpg', '2017-05-05', 'The peaceful world of the LocoRoco are under attack by the not-so-nice Moja Corps! These evil outer space creatures have come to take the LocoRoco from their land of blowing flowers, lively creatures, and pastel scenery. You must move the LocoRoco through more than 40 levels of slippery slopes, teetering platforms, and maze-like passages.', NULL, 7),
-	(30, 'Detroit: Become Human', 'images/detroit_human.jpg', '2018-05-25', 'Inspired by the short called “Kara”, Detroit is a neo-noir thriller set in the near-future city of Detroit. Androids, who look exactly like human beings, have replaced humans in most tasks: they are workers, babysitters, gardeners, nurses, teachers, clerks. The story of Detroit starts with an unexplained incident that begins to affect the Androids.', NULL, 12),
+	(30, 'Detroit: Become Human', 'images/detroit_human.jpg', '2018-05-25', 'Inspired by the short called “Kara”, Detroit is a neo-noir thriller set in the near-future city of Detroit. Androids, who look exactly like human beings, have replaced humans in most tasks: they are workers, babysitters, gardeners, nurses, teachers, clerks. The story of Detroit starts with an unexplained incident that begins to affect the Androids.', NULL, 23),
 	(31, 'The Persistence', 'images/persistence.jpg', '2018-07-24', 'Caught in the inexorable pull of a black hole, and with the crew mutated into horrific and murderous aberrations, it’s down to you, a clone of security officer Zimri Eder, to save the ship and make the jump back to earth.', NULL, 7),
 	(32, 'Rigs: Mechanized Combat League', 'images/rigs_combat.jpg', '2016-10-13', 'Launching exclusively for PlayStation VR, RIGS throws you into explosive battle arenas where mechanised combat and futuristic sports collide head-on. Immerse yourself into a single player experience that will push your skills to the limit and sharpen your team tactics. Unlock new and more powerful RIGS to then take online against the world.', NULL, 12),
 	(33, 'Nier: Automata', 'images/nier_automata.jpg', '2017-03-07', 'NieR Producer Yosuke Saito, director Taro Yoko and composer Keiichi Okabe return, teaming up with character designer Akihiko Yoshida and PlatinumGames to present the next entry in the saga – NieR: Automata.', NULL, 8),
@@ -95,7 +107,59 @@ INSERT INTO `game` (`id`, `name`, `cover`, `date`, `description`, `aggregate_sco
 	(59, 'Project CARS', 'images/project_cars.jpg', '2015-05-06', 'Create a driver, pick from a variety of motorsports, and shift into high gear to chase a number of Historic Goals and ultimate recognition in the Hall Of Fame. Then test your skills online either in competitive fully-loaded race weekends, leaderboard-based time challenges, or continually-updated community events.', NULL, 15),
 	(60, 'Pillars of Eternity II: Deadfire', 'images/pillars_eternity2.jpg', '2018-05-08', 'Pursue a rogue god over land and sea in the sequel to the multi-award-winning RPG Pillars of eternity. Captain your ship on a dangerous voyage of discovery across the vast unexplored archipelago region of the dead Fire. Bend the world to your will, as you explore the depths of Infinite possibilities, including detailed character customization, total freedom of exploration, and more meaningful choices at every turn.', NULL, 16),
 	(61, 'The Outer Worlds', 'images/outer_worlds.jpg', '2019-10-25', 'The Outer Worlds is a new single-player first-person sci-fi RPG from Obsidian Entertainment and Private Division. Lost in transit while on a colonist ship bound for the furthest edge of the galaxy, you awake decades later only to find yourself in the midst of a deep conspiracy threatening to destroy the Halcyon colony.', NULL, 16),
-	(62, 'Pathfinder Adventures', 'images/pathfinder_adventures.jpg', '2016-04-27', 'N/A', NULL, 16);
+	(62, 'Pathfinder Adventures', 'images/pathfinder_adventures.jpg', '2016-04-27', 'N/A', NULL, 16),
+	(63, 'Tyranny', 'images/tyranny.jpg', '2016-11-10', 'In Tyranny, the grand war between good and evil is over – and the forces of evil, led by Kyros the Overlord, have won.', NULL, 16),
+	(64, 'The Witcher 3: Wild Hunt', 'images/witcher3.jpg', '2015-05-18', 'With the Empire attacking the Kingdoms of the North and the Wild Hunt, a cavalcade of ghastly riders, breathing down your neck, the only way to survive is to fight back. As Geralt of Rivia, a master swordsman and monster hunter, leave none of your enemies standing. Explore a gigantic open world, slay beasts and decide the fates of whole communities with your actions, all in a genuine next generation format.', NULL, 17),
+	(65, 'Injustice 2', 'images/injustice2.jpg', '2017-05-16', 'Power up and build the ultimate version of your favorite DC legends in INJUSTICE 2. With a massive selection of DC Super Heroes and Super-Villains, INJUSTICE 2 allows you to equip every iconic character with unique and powerful gear earned throughout the game.', NULL, 17),
+	(66, 'Batman: Arkham Knight', 'images/batman_knight.jpg', '2015-06-23', 'Batman confronts the ultimate threat against the city he has been sworn to protect. The Scarecrow returns to congeal an imposing array of super villains, including The Penguin, Two-Face and Harley Quinn, to summarily destroy The Dark Knight. The game introduces Rocksteady\'s uniquely-designed imagining of the Batmobile drivable for the first time in the franchise.', NULL, 17),
+	(67, 'Mortal Kombat 11', 'images/mortal_kombat11.jpg', '2019-04-23', 'Mortal Kombat is back and better than ever in the next evolution of the iconic franchise. The all new Custom Character Variations give you unprecedented control to customize the fighters and make them your own. The new graphics engine showcasing every skull-shattering, eye-popping moment, brings you so close to the fight you can feel it.', NULL, 17),
+	(68, 'Monster Hunter: World', 'images/monster_hunter_world.jpg', '2018-01-26', 'In Monster Hunter: World you assume the role of a hunter venturing to a new continent where you track down and slay ferocious beasts in heart-pounding battles. This new land and its diverse inhabitants play a critical role in each quest as you strategically use the surrounding environment including terrain, vegetation and wildlife to your advantage in battle or become hindered by the hazards they present.', NULL, 18),
+	(69, 'Devil May Cry 5', 'images/devil_cry5.jpg', '2019-03-07', 'The story is set several years after Devil May Cry 4.\r\nLegendary DMC action returns, made all the more stylish by the power modern gaming has to offer.\r\n\r\nBehold stunning visuals built upon the technology that brought you Resident Evil 7 biohazard. High framerate graphics and flexible design give our creators what they need to offer fans the latest and greatest DMC experience.', NULL, 18),
+	(70, 'Pillars of Eternity', 'imags/pillars_eternity.jpg', '2015-03-26', 'Eternity aims to recapture the magic, imagination, depth, and nostalgia of classic RPG\'s that Obsidian enjoyed making - and playing. Eternity takes the central hero, memorable companions and the epic exploration of Baldur’s Gate, adds in the fun, intense combat and dungeon diving of Icewind Dale, and ties it all together with the emotional writing and mature thematic exploration of Planescape: Torment.', NULL, 19),
+	(71, 'Cities: Skylines', 'images/cities_skylines.jpg', '2015-03-10', 'Developed by Colossal Order, Cities: Skylines offers sprawling landscapes and maps with endless sandbox gameplay and new ways to expand your city. Key to progression is the ability to influence your city’s policy by incorporating taxation into districts. All this plus the ability to mod the game to suit your play style.', NULL, 19),
+	(72, 'Age of Wonders: Planetfall', 'images/age_wonders_planetfall.jpg', '2019-08-06', 'Age of Wonders: Planetfall is the new strategy game from Triumph Studios, creators of the critically acclaimed Age of Wonders series, bringing all the exciting tactical turn-based combat and in-depth empire building of its predecessors to space in an all-new, sci-fi setting.', NULL, 19),
+	(73, 'Steel Division: Normandy 44', 'images/steel_division_normandy44.jpg', '2017-05-23', 'Steel Division: Normandy is a tactical real-time strategy (RTS) game that pits players against AI enemies in a single-player campaign -- or against several opponents in massive 10-on-10 multiplayer battles.', NULL, 19),
+	(74, 'Hearts of Iron IV', 'images/hearts_iron4.jpg', '2016-06-06', 'Hearts of Iron IV challenges players to face the brutal conflict of World War II in a multifaceted grand strategy game, where history can be fully relived or rewritten from the perspective of a global superpower attempting to change the world, or a small nation simply trying to survive.', NULL, 19),
+	(75, 'Atelier Ryza: Ever Darkness & The Secret Hideout', 'images/atelier_ryza.jpg', '2019-10-29', 'Even though everyone has them,\r\nthe memories we create with our friends are\r\nspecial to each and every one of us. The story of "Atelier Ryza" is\r\nabout a girl and her friends on the\r\nverge of adulthood,\r\ndiscovering what is most important to them.', NULL, 20),
+	(76, 'Toukiden: Kiwami', 'images/toukiden_kiwami.jpg', '2015-03-31', 'In the world of Toukiden, Demons (Oni) have hidden in the shadows aiming to torment mankind. Throughout history, a secret caste of warriors, the Slayers, have been trained to dispose of the demonic threat before it could consume the world. However, an event called the ‘Awakening’ caused rifts to appear in space and time, causing places that had long disappeared from the world to resurface, unleashing hordes of demons that relentlessly hunted humans.', NULL, 20),
+	(77, 'Nobunaga\'s Ambition: Sphere of Influence', 'images/nobunaga_ambition_influence.jpg', '2015-09-01', 'Become a Daimyo of the Warring States period of Japanese history in NOBUNAGA\'S AMBITION, a historical simulation game of conquest and domination. It is the 30th anniversary of this series and this current release, NOBUNAGA\'S AMBITION: Sphere of Influence, is the crown of the series.', NULL, 20),
+	(78, 'Atelier Lulua: The Scion of Arland', 'images/atelier_lulua.jpg', '2019-06-04', 'The long awaited 4th installment of the popular "Arland" series that had begun with the "Atelier Rorona." In this new story, players will revisit the nostalgic world of Arland and embark on exciting journey of alchemy together with Rorona\'s daughter, Lulua.', NULL, 20),
+	(79, 'Attack on Titan', 'images/attack_titan.jpg', '2016-08-30', 'Also known as "Attack on Titan: Wings of Freedom". Fight on a violent battlefield in which the game changes from moment to moment. Utilizing the "Omni-directional mobility gear" created specifically for battle with Titans allows you to fly freely across and above the battlefield. It\'s incumbent upon the Scout Regiment, to which Eren belongs, to travel beyond the Wall and expand the territories of mankind.', NULL, 20),
+	(80, 'Toukiden 2', 'images/toukiden2.jpg', '2017-03-21', 'Slayers: Go forth and eradicate the Oni menace. Experience the latest hunting action game featuring a dynamic targeted destruction system. From the battlefield to the village that serves as your base of operations, the game takes place in a vast “open world.” Explore the vast world for yourself, and enjoy hunting action from an entirely new perspective.', NULL, 20),
+	(81, 'Warriors Orochi 4', 'images/warriors_orochi4.jpg', '2018-10-15', 'Pick from 170 characters: Heroes gather from the Samurai Warriors and Dynasty Warriors Universes. Assume the Power of the Gods: Enjoy brand new Musou action. Sacred treasures empowered by a miraculous power enable characters to evoke magic attacks. The infamous one versus thousands battle action sees new additions.', NULL, 20),
+	(82, 'Dead or Alive 6', 'images/doa6.jpg', '2019-03-01', 'DEAD OR ALIVE 6 is a fast-paced 3D fighting game, produced by Koei Tecmo Games, featuring graphics and multi-tiered stages that create a truly entertaining competitive experience. The story follows the events of DEAD OR ALIVE 5, focusing on 2 separate main narratives; namely, the battle between “Ninja and DOATEC” versus “M.I.S.T. lead by Donovan”, and the events that occur during the 6th DEAD OR ALIVE Tournament.', NULL, 20),
+	(83, 'NBA 2K17', 'images/nba2k17.jpg', '2016-09-20', 'NBA 2K17 promises to take the game to new heights and continue to blur the lines between video game and reality.', NULL, 21),
+	(84, 'XCOM 2', 'images/xcom2.jpg', '2016-02-05', '20 years have passed since world leaders unconditionally surrendered to alien forces and XCOM, the world\'s last line of defense, was left destroyed and scattered. Now the aliens hold dominion over the Earth, building shining cities that promise a brilliant future for humanity on the surface, while hiding a sinister intent below and eliminating all who don\'t fall in like with their new order.', NULL, 21),
+	(85, 'Sid Meler\'s Civilization VI', 'images/civilization6.jpg', '2016-10-20', 'Civilization VI offers new ways to interact with your world, expand your empire across the map, advance your culture, and compete against history’s greatest leaders to build a civilization that will stand the test of time.', NULL, 21),
+	(86, 'Persona 5', 'images/persona5.jpg', '2017-04-04', 'Beneath the veneer of typical urban high school life, a group of teenagers mask their mysterious alter egos, their "phantom thief" side. Who are they? Why are they dressed as such? What are their motives? And... why are they being pursued? A picaresque coming-of-age story, Persona 5 brings a new twist to the RPG genre.', NULL, 22),
+	(87, 'Shin Megami Tensei IV: Apocalypse', 'images/shin_megami_tensei4_apocalypse.jpg', '2016-09-20', 'The story of Shin Megami Tensei IV: Apocalypse depicts the remnants of Tokyo, ravaged by a catastrophe. Demons and humans co-exist, but in this state, the remnants of humankind are just a prize being fought over by the higher deities. One lone Hunter, the game\'s protagonist, meets an early demise and through a pact with a lesser god, is brought back to life in exchange for his pledge of servitude.', NULL, 22),
+	(88, 'Person Q2: New Cinema Labyrinth', 'images/personaq2.jpg', '2019-06-04', 'Joker Takes Center Stage - Experience a thought-provoking story from the perspective of the protagonist from Persona 5 as you along with the other Phantom Thieves meet the S.E.E.S. from Persona 3 and the Investigation Team from Persona 4 in a cinematic world!.', NULL, 22),
+	(89, 'SUPERBEAT: XONIC', 'images/superbeat_xonic.jpg', '2015-11-10', 'Fully compatible with PlayStation TV.', NULL, 22),
+	(90, 'Trine 4: The Nightmare Prince', 'images/trine4.jpg', '2019-10-08', 'TheTrine series returns to the magic of 2.5D! Join three iconic heroes as they set off on a quest through fantastical fairytale landscapes to save the world from the Nightmare Prince’s shadows.', NULL, 24),
+	(91, 'Flashback', 'images/flashback.jpg', '2018-06-17', '2142. After fleeing from a space ship but stripped of all memory, the eminent scientist Conrad B. Hart awakens on Titan, a colonised moon of the planet Saturn. His enemies and kidnappers are snapping at his heels. He must find a way back to Earth, defending himself against the dangers he encounters and unravelling an insidious extra-terrestrial plot that threatens the planet', NULL, 24),
+	(92, 'The Golf Club 2', 'images/golf_club2.jpg', '2017-06-27', 'Rise to fame and fortune in the largest, most dynamic golf game ever created. Assemble and join online societies with friends, compete in tournaments, and earn money to climb the ranks in golf\'s largest gaming community.', NULL, 24),
+	(93, 'Surviving Mars', 'images/survivng_mars.jpg', '2018-03-15', 'Surviving Mars is a sci-fi city builder all about colonizing Mars and surviving the process. Choose a space agency for resources and financial support before determining a location for your colony. Build domes and infrastructure, research new possibilities and utilize drones to unlock more elaborate ways to shape and expand your settlement.', NULL, 19),
+	(94, 'RIDE 3', 'images/ride3.jpg', '2018-11-30', 'Experience what the creators promise to be the most complete racing ever with RIDE 3. Race on different tracks all over the world, put your favourite vehicles\' speed to the test and have fun by customising them with the new Livery Editor.', NULL, 24),
+	(95, 'American Truck Simulator', 'images/truck_simulator.jpg', '2016-02-02', 'Experience legendary American trucks and deliver various cargoes across sunny California and sandy Nevada. American Truck Simulator takes you on a journey through the breathtaking landscapes and widely recognized landmarks around the States.', NULL, 24),
+	(96, 'The Surge', 'images/surge.jpg', '2017-05-16', 'Set in a heavily dystopian future as Earth nears the end of its life, those who remain in the overpopulated cities must work to survive as social programs become saturated by an ageing population and increasing environmental diseases.', NULL, 14),
+	(97, 'Lumo', 'images/lumo.jpg', '2016-05-24', 'As a contemporary take on the long-lost isometric platform genre, Lumo can be enjoyed by anyone looking for an absorbing, challenging and rewarding adventure. But for those who lived through the golden age of videogames – the 80s and early 90s – or know about the games and culture from that time, layer upon layer of nods, winks and touches to those times help build upon the experience.', NULL, 24),
+	(98, 'Styx: Shards of Darkness', 'images/styx.jpg', '2017-03-14', 'Following the fall of Akenash tower, an extraordinary matter has forced Styx out of hiding and into Korrangar, city of the Dark Elves. Supposedly impregnable, a diplomatic summit offers Styx a chance at slipping in unnoticed. His infiltration complete, Styx will stop at nothing to accomplish the robbery of a lifetime: stealing a scepter of immense and indomitable power.', NULL, 14),
+	(99, 'The Fisherman: Fishing Planet', 'images/fisherman_planet.jpg', '2019-10-15', 'The gold standard for fishing games, now available in a complete version with no microtransactions! Experience all the fun of the sport and hone your skills in single-player or multiplayer mode. Exclusive content: the new map of Creuse in France, the trolling technique and four new fish.', NULL, 24),
+	(100, 'Warhammer 40,000: Inquisitor - Martyr', 'images/warhammer40k.jpg', '2018-07-05', 'Warhammer 40,000: Inquisitor Martyr is a grim Action-RPG featuring multiple classes of the Inquisition who will carry out the will of the Emperor even in the darkest reaches of the Imperium!', NULL, 24),
+	(101, 'Fishing Sim World', 'images/fishing_world.jpg', '2018-09-18', 'Feel the adrenaline rush of landing a trophy largemouth bass and the thrill of fighting huge carp and monster pike.', NULL, 24),
+	(102, 'Aragami', 'images/aragami.jpg', '2016-10-10', 'Aragami is a stealth game in which you play an undead assassin with the power to control the shadows. The darkness is your ally and the source of your strength, letting you teleport instantly to any other shadow, create new areas of darkness to stay invisible, materialize physical weapons and traps from thin air, or even summon a shadow dragon to decapitate your target.', NULL, 24),
+	(103, 'WRC 7', 'images/wrc7.jpg', '2017-09-15', 'Play as the best drivers in the Championship and experience the competition through its 13 official events. Take part in the famous Super Special Stages and race in the key locations from the real WRC rallies.', NULL, 24),
+	(104, 'Override: Mech City Brawl', 'images/override.jpg', '2018-12-03', 'No gears, no glory! Control gigantic robots and duke it out in this 3D mech brawler! Epic battles await in local and online Versus mode, 4-player Co-op – where each player controls one part of a mech – and a single-player game mode. Each mech has its own gameplay style, special moves, and finishers.', NULL, 24),
+	(105, 'Farming Simulator 19', 'images/farming_simulator17.jpg', '2016-10-25', 'Assume the role of a modern farmer in Farming Simulator 17. Immerse yourself in an open world loaded with a harvest of new content. Explore farming possibilities over hundreds of acres of land, including a detailed new North American environment.', NULL, 14),
+	(106, 'Overwatch', 'images/overwatch.jpg', '2016-06-23', 'Overwatch is a highly stylized team-based shooter set on earth in the near future. Every match is an intense multiplayer showdown pitting a diverse cast of soldiers, mercenaries, scientists, adventurers, and oddities against each other in an epic, globe-spanning conflict.', NULL, 26),
+	(107, 'Starcraft II: Legacy of the Void', 'images/starcraft2.jpg', '2015-11-10', 'StarCraft II continues the epic saga of the Protoss, Terran, and Zerg. These three distinct and powerful races clash once again in the fast-paced real-time strategy sequel to the legendary original, StarCraft. Legions of veteran, upgraded, and brand-new unit types do battle across the galaxy, as each faction struggles for survival.', NULL, 26),
+	(108, 'Heroes of the Storm', 'images/heroes_storm.jpg', '2015-06-02', 'This free-to-play online team brawler assembles a diverse cast of characters from Blizzard’s far-flung realms of science fiction and fantasy, including the Warcraft, StarCraft, and Diablo universes, and challenges them to compete in epic, adrenaline-charged battles. Heroes of the Storm solicits players to customize heroes to suit their style and then team up with friends for some all-out mayhem.', NULL, 26),
+	(109, 'Metal Gear Solid V: The Phantom Pain', 'images/metal_gear_solid5.jpg', '2015-09-01', 'Following the prologue METAL GEAR SOLID V: GROUND ZEROES, METAL GEAR SOLID V: THE PHANTOM PAIN concludes the METAL GEAR SOLID V experience by following the story of the protagonist of the series, Big Boss (a.k.a. Snake). The METAL GEAR SOLID V experience is Creator and Director Hideo Kojima\'s first time incorporating open world gameplay to the groundbreaking METAL GEAR franchise.', NULL, 27),
+	(110, 'Planet Zoo', 'images/planet_zoo.jpg', '2019-11-05', 'Build a world for wildlife in Planet Zoo. From the developers of Planet Coaster and Zoo Tycoon comes the ultimate zoo sim, featuring authentic living animals who think, feel and explore the world you create around them. Experience a globe-trotting campaign or let your imagination run wild in the freedom of Sandbox mode.', NULL, 29),
+	(111, 'Tales From Deep Space', 'images/tales_deep_space.jpg', '2015-06-25', 'Tales From Deep Space is a comedic mis-adventure set on Big Moon, the most eccentric space station in the galaxy. Players help E, a traveling salesman, and his loyal luggage drone CASI escape when Big Moon is thrown into lockdown. E and CASI must work together to fight dangerous battles, solve fiendish puzzles and unravel the nefarious plot behind the mysterious "Meek" uprising.', NULL, 29),
+	(112, 'Jurassic World Evolution', 'images/jurassic_world_evolution.jpg', '2018-06-12', 'Take charge of operations on the legendary islands of the Muertes archipelago and bring the wonder, majesty and danger of dinosaurs to life. Build for Science, Entertainment or Security interests in an uncertain world where life always finds a way.', NULL, 29),
+	(113, 'Screamride', 'images/screamride.jpg', '2015-03-03', 'Screamride is a physics-based coaster game where creativity and destruction are equally welcomed. This game features hundreds of customizable building components, physics-based destruction, cinematic collisions, unlockable levels, in-game leaderboards, global rankings and more.', NULL, 6),
+	(114, 'Artifact', 'images/artifact.jpg', '2018-11-28', 'A collaboration between legendary game designer Richard Garfield and Valve, Artifact promises the deepest gameplay and the highest-fidelity experience ever seen in a trading card game.', NULL, 30);
 /*!40000 ALTER TABLE `game` ENABLE KEYS */;
 
 -- Dumping structure for table case_study.game_genre
@@ -108,8 +172,7 @@ CREATE TABLE IF NOT EXISTS `game_genre` (
   CONSTRAINT `FK_GENRE_E_ID` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table case_study.game_genre: ~110 rows (approximately)
-DELETE FROM `game_genre`;
+-- Dumping data for table case_study.game_genre: ~195 rows (approximately)
 /*!40000 ALTER TABLE `game_genre` DISABLE KEYS */;
 INSERT INTO `game_genre` (`game_id`, `genre_id`) VALUES
 	(1, 1),
@@ -221,7 +284,92 @@ INSERT INTO `game_genre` (`game_id`, `genre_id`) VALUES
 	(48, 14),
 	(50, 14),
 	(52, 14),
-	(53, 14);
+	(53, 14),
+	(62, 14),
+	(63, 11),
+	(64, 1),
+	(64, 11),
+	(65, 1),
+	(65, 3),
+	(66, 1),
+	(66, 2),
+	(67, 1),
+	(67, 3),
+	(68, 11),
+	(68, 1),
+	(69, 1),
+	(69, 2),
+	(70, 11),
+	(70, 15),
+	(71, 14),
+	(72, 14),
+	(72, 16),
+	(73, 14),
+	(73, 10),
+	(74, 14),
+	(74, 10),
+	(75, 11),
+	(76, 1),
+	(77, 14),
+	(77, 16),
+	(78, 11),
+	(79, 1),
+	(80, 11),
+	(80, 1),
+	(81, 1),
+	(82, 1),
+	(82, 3),
+	(83, 13),
+	(83, 12),
+	(84, 14),
+	(84, 16),
+	(85, 14),
+	(85, 16),
+	(86, 11),
+	(87, 11),
+	(88, 11),
+	(89, 1),
+	(90, 1),
+	(90, 7),
+	(91, 1),
+	(91, 7),
+	(92, 13),
+	(93, 14),
+	(94, 9),
+	(94, 12),
+	(95, 12),
+	(96, 11),
+	(96, 1),
+	(97, 1),
+	(97, 2),
+	(97, 7),
+	(98, 1),
+	(98, 2),
+	(99, 13),
+	(100, 14),
+	(100, 10),
+	(101, 13),
+	(102, 1),
+	(102, 2),
+	(103, 9),
+	(103, 12),
+	(104, 1),
+	(105, 12),
+	(106, 1),
+	(106, 4),
+	(107, 14),
+	(107, 10),
+	(108, 1),
+	(108, 14),
+	(108, 10),
+	(109, 1),
+	(109, 2),
+	(110, 14),
+	(111, 1),
+	(112, 14),
+	(113, 12),
+	(114, 14),
+	(114, 16);
 /*!40000 ALTER TABLE `game_genre` ENABLE KEYS */;
 
 -- Dumping structure for table case_study.genre
@@ -232,7 +380,6 @@ CREATE TABLE IF NOT EXISTS `genre` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumping data for table case_study.genre: ~18 rows (approximately)
-DELETE FROM `genre`;
 /*!40000 ALTER TABLE `genre` DISABLE KEYS */;
 INSERT INTO `genre` (`id`, `name`) VALUES
 	(1, 'action'),
@@ -262,8 +409,7 @@ CREATE TABLE IF NOT EXISTS `publishing_company` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
--- Dumping data for table case_study.publishing_company: ~29 rows (approximately)
-DELETE FROM `publishing_company`;
+-- Dumping data for table case_study.publishing_company: ~30 rows (approximately)
 /*!40000 ALTER TABLE `publishing_company` DISABLE KEYS */;
 INSERT INTO `publishing_company` (`id`, `name`) VALUES
 	(1, 'Nintendo'),
@@ -313,7 +459,6 @@ CREATE TABLE IF NOT EXISTS `review` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumping data for table case_study.review: ~0 rows (approximately)
-DELETE FROM `review`;
 /*!40000 ALTER TABLE `review` DISABLE KEYS */;
 /*!40000 ALTER TABLE `review` ENABLE KEYS */;
 
@@ -323,15 +468,16 @@ CREATE TABLE IF NOT EXISTS `user` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `is_admin` bit(1) NOT NULL DEFAULT b'0',
+  `is_blocked` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table case_study.user: ~2 rows (approximately)
-DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` (`id`, `name`, `email`, `password`) VALUES
-	(1, 'aaron', 'aaron@gmail.com', 'F@re80optal'),
-	(2, 'erin', 'erin@gmail.com', 'Latp#80ruff');
+INSERT INTO `user` (`id`, `name`, `email`, `password`, `is_admin`, `is_blocked`) VALUES
+	(1, 'aaron', 'aaron@gmail.com', 'F@re80optal', b'0', b'0'),
+	(2, 'erin', 'erin@gmail.com', 'Latp#80ruff', b'0', b'0');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

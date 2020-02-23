@@ -1,3 +1,9 @@
+/*
+ * Filename: IndexServlet.java
+ * author: Aaron Garnett
+ * date: 2/18/2020 original
+ * 
+ * */
 package com.aaron.servlet;
 
 import java.io.IOException;
@@ -16,9 +22,8 @@ import com.arron.entities.Game;
 import com.arron.entities.Genre;
 
 /**
- * @author aaron
+ * Servlet implementation class IndexServlet
  * 
- *         Servlet implementation class IndexServlet
  */
 @WebServlet("/IndexServlet")
 public class IndexServlet extends HttpServlet {
@@ -64,5 +69,4 @@ public class IndexServlet extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

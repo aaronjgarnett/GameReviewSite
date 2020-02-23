@@ -1,3 +1,9 @@
+/*
+ * Filename: ContactServlet.java
+ * author: Aaron Garnett
+ * date: 2/18/2020 original
+ * 
+ * */
 package com.aaron.servlet;
 
 import java.io.IOException;
@@ -10,9 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author aaron
+ * Servlet implementation class ContactServlet
  * 
- *         Servlet implementation class ContactServlet
  */
 @WebServlet("/ContactServlet")
 public class ContactServlet extends HttpServlet {
@@ -45,5 +50,4 @@ public class ContactServlet extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

@@ -1,6 +1,9 @@
-/**
+/*
+ * Filename: UserService.java
+ * author: Aaron Garnett
+ * date: 2/18/2020 original
  * 
- */
+ * */
 package com.aaron.service;
 
 import java.util.List;
@@ -10,17 +13,22 @@ import javax.persistence.Query;
 import com.arron.entities.User;
 
 /**
- * @author aaron
- *
- *         Sevice for User Entity
+ * Sevice for User Entity
+ * 
  */
-public class UserService extends AbstractService {
+public class UserService extends MainService {
+	/**
+	 * @param u
+	 */
 	public static void addUser(User u) {
 		em.getTransaction().begin();
 		em.persist(u);
 		em.getTransaction().commit();
 	}
 
+	/**
+	 * @return q.getResultList()
+	 */
 	@SuppressWarnings("unchecked")
 	public static List<User> getAllUsers() {
 		Query q = em.createNamedQuery("User.findAll");

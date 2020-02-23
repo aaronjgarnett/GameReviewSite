@@ -1,3 +1,9 @@
+/*
+ * Filename: HeaderServlet.java
+ * author: Aaron Garnett
+ * date: 2/18/2020 original
+ * 
+ * */
 package com.aaron.servlet;
 
 import java.io.IOException;
@@ -15,9 +21,8 @@ import com.aaron.service.GameService;
 import com.arron.entities.Game;
 
 /**
- * @author aaron
+ * Servlet implementation class HeaderServlet
  * 
- *         Servlet implementation class HeaderServlet
  */
 @WebServlet("/HeaderServlet")
 public class HeaderServlet extends HttpServlet {
@@ -39,7 +44,7 @@ public class HeaderServlet extends HttpServlet {
 			throws ServletException, IOException {
 		List<Game> games = GameService.getAllGames();
 		request.setAttribute("games", games);
-		
+
 		HttpSession session = request.getSession(false);
 		if (session != null) {
 			if (session.getAttribute("user") != null) {
@@ -60,5 +65,4 @@ public class HeaderServlet extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

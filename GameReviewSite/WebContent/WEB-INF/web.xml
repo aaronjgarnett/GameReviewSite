@@ -8,6 +8,6 @@
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
 	<listener>
-		<listener-class>com.aaron.listener.ServletConfig</listener-class>
+		<listener-class>com.aaron.listener.ServletListener</listener-class>
 	</listener>
 </web-app>

@@ -1,3 +1,9 @@
+/*
+ * Filename: LogoutServlet.java
+ * author: Aaron Garnett
+ * date: 2/18/2020 original
+ * 
+ * */
 package com.aaron.servlet;
 
 import java.io.IOException;
@@ -10,9 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * @author aaron
+ * Servlet implementation class LogoutServlet
  * 
- *         Servlet implementation class LogoutServlet
  */
 @WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
@@ -47,5 +52,4 @@ public class LogoutServlet extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

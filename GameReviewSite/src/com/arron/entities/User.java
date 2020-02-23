@@ -1,8 +1,20 @@
+/*
+ * Filename: User.java
+ * author: Aaron Garnett
+ * date: 2/18/2020 original
+ * 
+ * */
 package com.arron.entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 /**
  * The persistent class for the user database table.
@@ -41,46 +53,80 @@ public class User implements Serializable {
 	public User() {
 	}
 
+	/**
+	 * @return id
+	 */
 	public int getId() {
 		return this.id;
 	}
 
+	/**
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return email
+	 */
 	public String getEmail() {
 		return this.email;
 	}
 
+	/**
+	 * @param email
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	/**
+	 * @return name
+	 */
 	public String getName() {
 		return this.name;
 	}
 
+	/**
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * @return password
+	 */
 	public String getPassword() {
 		return this.password;
 	}
 
+	/**
+	 * @param password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	/**
+	 * @return reviews
+	 */
 	public List<Review> getReviews() {
 		return this.reviews;
 	}
 
+	/**
+	 * @param reviews
+	 */
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
 	}
 
+	/**
+	 * @param review
+	 * @return review
+	 */
 	public Review addReview(Review review) {
 		getReviews().add(review);
 		review.setUser(this);
@@ -88,11 +134,14 @@ public class User implements Serializable {
 		return review;
 	}
 
+	/**
+	 * @param review
+	 * @return review
+	 */
 	public Review removeReview(Review review) {
 		getReviews().remove(review);
 		review.setUser(null);
 
 		return review;
 	}
-
 }

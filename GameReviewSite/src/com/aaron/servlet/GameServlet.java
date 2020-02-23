@@ -1,3 +1,9 @@
+/*
+ * Filename: GameServlet.java
+ * author: Aaron Garnett
+ * date: 2/18/2020 original
+ * 
+ * */
 package com.aaron.servlet;
 
 import java.io.IOException;
@@ -14,9 +20,8 @@ import com.aaron.service.GameService;
 import com.arron.entities.Game;
 
 /**
- * @author aaron
+ * Servlet implementation class GameServlet
  * 
- *         Servlet implementation class GameServlet
  */
 @WebServlet("/GameServlet")
 public class GameServlet extends HttpServlet {
@@ -78,5 +83,4 @@ public class GameServlet extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

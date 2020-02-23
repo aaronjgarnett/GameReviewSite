@@ -1,9 +1,30 @@
+/*
+ * Filename: Game.java
+ * author: Aaron Garnett
+ * date: 2/18/2020 original
+ * 
+ * */
 package com.arron.entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * The persistent class for the game database table.
@@ -52,78 +73,136 @@ public class Game implements Serializable {
 	public Game() {
 	}
 
+	/**
+	 * @return id
+	 */
 	public int getId() {
 		return this.id;
 	}
 
+	/**
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return aggregateScore
+	 */
 	public double getAggregateScore() {
 		return this.aggregateScore;
 	}
 
+	/**
+	 * @param aggregateScore
+	 */
 	public void setAggregateScore(double aggregateScore) {
 		this.aggregateScore = aggregateScore;
 	}
 
+	/**
+	 * @return cover
+	 */
 	public String getCover() {
 		return this.cover;
 	}
 
+	/**
+	 * @param cover
+	 */
 	public void setCover(String cover) {
 		this.cover = cover;
 	}
 
+	/**
+	 * @return description
+	 */
 	public String getDescription() {
 		return this.description;
 	}
 
+	/**
+	 * @param description
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	/**
+	 * @return name
+	 */
 	public String getName() {
 		return this.name;
 	}
 
+	/**
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * @return date
+	 */
 	public Date getDate() {
 		return this.date;
 	}
 
+	/**
+	 * @param date
+	 */
 	public void setDate(Date date) {
 		this.date = date;
 	}
 
+	/**
+	 * @return genres
+	 */
 	public List<Genre> getGenres() {
 		return this.genres;
 	}
 
+	/**
+	 * @param genres
+	 */
 	public void setGenres(List<Genre> genres) {
 		this.genres = genres;
 	}
 
+	/**
+	 * @return publishingCompany
+	 */
 	public PublishingCompany getPublishingCompany() {
 		return this.publishingCompany;
 	}
 
+	/**
+	 * @param publishingCompany
+	 */
 	public void setPublishingCompany(PublishingCompany publishingCompany) {
 		this.publishingCompany = publishingCompany;
 	}
 
+	/**
+	 * @return reviews
+	 */
 	public List<Review> getReviews() {
 		return this.reviews;
 	}
 
+	/**
+	 * @param reviews
+	 */
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
 	}
 
+	/**
+	 * @param review
+	 * @return review
+	 */
 	public Review addReview(Review review) {
 		getReviews().add(review);
 		review.setGame(this);
@@ -131,6 +210,10 @@ public class Game implements Serializable {
 		return review;
 	}
 
+	/**
+	 * @param review
+	 * @return review
+	 */
 	public Review removeReview(Review review) {
 		getReviews().remove(review);
 		review.setGame(null);
@@ -138,10 +221,33 @@ public class Game implements Serializable {
 		return review;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "Game [id=" + id + ", aggregateScore=" + aggregateScore + ", cover=" + cover + ", description="
-				+ description + ", name=" + name + ", date=" + date + ", publishingCompany=" + publishingCompany + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Game [id=");
+		builder.append(id);
+		builder.append(", aggregateScore=");
+		builder.append(aggregateScore);
+		builder.append(", cover=");
+		builder.append(cover);
+		builder.append(", description=");
+		builder.append(description);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", date=");
+		builder.append(date);
+		builder.append(", genres=");
+		builder.append(genres);
+		builder.append(", publishingCompany=");
+		builder.append(publishingCompany);
+		builder.append(", reviews=");
+		builder.append(reviews);
+		builder.append("]");
+		return builder.toString();
 	}
-
 }

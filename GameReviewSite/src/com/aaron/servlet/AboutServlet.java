@@ -1,3 +1,9 @@
+/*
+ * Filename: AboutServlet.java
+ * author: Aaron Garnett
+ * date: 2/18/2020 original
+ * 
+ * */
 package com.aaron.servlet;
 
 import java.io.IOException;
@@ -10,9 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author aaron
+ * Servlet implementation class AboutServlet
  * 
- *         Servlet implementation class AboutServlet
  */
 @WebServlet("/AboutServlet")
 public class AboutServlet extends HttpServlet {
@@ -45,5 +50,4 @@ public class AboutServlet extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }
