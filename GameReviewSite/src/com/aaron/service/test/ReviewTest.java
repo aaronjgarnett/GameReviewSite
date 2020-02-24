@@ -1,13 +1,12 @@
 /*
- * Filename: GameTest.java
+ * Filename: ReviewTest.java
  * author: Aaron Garnett
- * date: 2/18/2020 original
+ * date: 2/24/2020 original
  * 
  * */
 package com.aaron.service.test;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -19,8 +18,9 @@ import org.junit.jupiter.api.Test;
 
 import com.aaron.service.GameService;
 import com.aaron.service.MainService;
+import com.aaron.service.ReviewService;
 
-class GameTest {
+class ReviewTest {
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -38,34 +38,19 @@ class GameTest {
 	}
 
 	@Test
-	void testGetTopTen() {
-		assertNotNull(GameService.getTopTenGames());
+	void testGetAllReviews() {
+		assertNotNull(ReviewService.getAllReviews());
 	}
 
 	@Test
-	void testGetGameById() {
-		assertNotNull(GameService.getGameById(1));
+	void testGetAllReviewsByGame() {
+		assertFalse(ReviewService.getAllReviewsByGame(GameService.getGameById(1)).isEmpty());
 	}
 
 	@Test
-	void testGetGameByIdNoResult() {
+	void testGetAllReviewsByGameNoResult() {
 		assertThrows(NoResultException.class, () -> {
-			GameService.getGameById(255);
+			ReviewService.getAllReviewsByGame(GameService.getGameById(255));
 		});
-	}
-
-	@Test
-	void testGetTopTenByGenre() {
-		assertFalse(GameService.getTopTenGamesByGenre(1).isEmpty());
-	}
-
-	@Test
-	void testGetTopTenByGenreNoResult() {
-		assertTrue(GameService.getTopTenGamesByGenre(255).isEmpty());
-	}
-
-	@Test
-	void testGetAllGames() {
-		assertNotNull(GameService.getAllGames());
 	}
 }

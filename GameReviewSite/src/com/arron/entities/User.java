@@ -9,10 +9,12 @@ package com.arron.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
@@ -21,7 +23,8 @@ import javax.persistence.OneToMany;
  * 
  */
 @Entity
-@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
+@NamedQueries({ @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
+		@NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :givenID") })
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -29,7 +32,15 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	private String avater;
+
 	private String email;
+
+	@Column(name = "is_admin")
+	private boolean isAdmin;
+
+	@Column(name = "is_blocked")
+	private boolean isBlocked;
 
 	private String name;
 
@@ -65,6 +76,20 @@ public class User implements Serializable {
 	 */
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return avatar
+	 */
+	public String getAvater() {
+		return this.avater;
+	}
+
+	/**
+	 * @param avater
+	 */
+	public void setAvater(String avater) {
+		this.avater = avater;
 	}
 
 	/**
@@ -121,6 +146,34 @@ public class User implements Serializable {
 	 */
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
+	}
+
+	/**
+	 * @return isAdmin
+	 */
+	public boolean getIsAdmin() {
+		return this.isAdmin;
+	}
+
+	/**
+	 * @param isAdmin
+	 */
+	public void setIsAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+	/**
+	 * @return isBlocked
+	 */
+	public boolean getIsBlocked() {
+		return this.isBlocked;
+	}
+
+	/**
+	 * @param isBlocked
+	 */
+	public void setIsBlocked(boolean isBlocked) {
+		this.isBlocked = isBlocked;
 	}
 
 	/**

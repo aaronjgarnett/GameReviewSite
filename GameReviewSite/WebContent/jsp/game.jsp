@@ -47,17 +47,20 @@
 						<strong>Genre(s): </strong>
 						<c:forEach items="${game.genres}" var="i">${i.name} </c:forEach>
 					</div>
-					<div class="col-sm-5 grade">${game.aggregateScore}</div>
+					<div class="col-sm-5 grade">
+						<fmt:formatNumber value="${game.aggregateScore}" type="number"
+							maxFractionDigits="1" />
+					</div>
 				</div>
 				<div class="row">
 					<c:if test="${loggedIn}">
 						<div class="col-sm-12">
-							<form method="post">
+							<form action="ReviewServlet?id=${game.id}" method="post">
 								<textarea id="subject" name="subject"
 									placeholder="Write review here..."
 									style="width: 320px; height: 125px" required></textarea>
 								<br /> <input id="score" type="number" name="score" min="1"
-									max="10" required /> <br />
+									max="10" placeholder="Score(1-10)" required /> <br />
 								<button id="submitReview" type="submit">Submit Review</button>
 							</form>
 						</div>
@@ -71,32 +74,28 @@
 						</div>
 					</c:if>
 				</div>
-				<div class="row">
-					<div class="col-sm-12" style="margin-top: 20px">
-						<span class="glyphicon glyphicon-user"></span>aaron says:
-						<div class="review">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Sed consectetur eleifend mauris sed porttitor. Etiam vestibulum
-								ante eros, sed commodo arcu malesuada id. Nunc fermentum eros ac
-								lacus ullamcorper, a semper massa viverra. Quisque id diam elit.
-								In orci odio, porttitor in eros nec, imperdiet congue mi.
-								Praesent mattis elit eu vehicula semper. Integer eget mauris
-								finibus, laoreet augue quis, vehicula ante. Nam volutpat quis
-								leo vel condimentum. Praesent at lacus non lacus tempor mattis.
-								Nullam at ante dui. In hac habitasse platea dictumst. Proin id
-								mi condimentum, scelerisque velit sed, ornare lacus. Donec
-								malesuada accumsan augue malesuada rhoncus. Aliquam et nibh
-								pharetra, porttitor sem ut, finibus orci. Aliquam nec dictum
-								eros, iaculis maximus mauris. Vestibulum ante ipsum primis in
-								faucibus orci luctus et ultrices posuere cubilia Curae;</p>
-							<br />
-							<div class="score">10/10</div>
+				<c:forEach items="${reviews}" var="i">
+					<div class="row">
+						<div class="col-sm-12" style="margin-top: 20px">
+							<span class="glyphicon glyphicon-user"></span>${i.user.name}
+							says:
+							<div class="review">
+								<p>${i.content}</p>
+								<br />
+								<div class="score">
+									<fmt:formatNumber value="${i.score}" type="number"
+										maxFractionDigits="1" />
+									/10
+								</div>
+							</div>
+							<c:if test="${loggedIn}">
+								<c:if test="${i.user.name == user}">
+									<a href="RemoveServlet?id=${i.id}&game=${game.id}">remove</a>
+								</c:if>
+							</c:if>
 						</div>
-						<c:if test="${loggedIn}">
-							<a>remove</a>
-						</c:if>
 					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>

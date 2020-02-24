@@ -7,6 +7,7 @@
 package com.aaron.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,7 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.aaron.service.GameService;
+import com.aaron.service.ReviewService;
 import com.arron.entities.Game;
+import com.arron.entities.Review;
 
 /**
  * Servlet implementation class GameServlet
@@ -48,12 +51,16 @@ public class GameServlet extends HttpServlet {
 
 		if (gameId != null) {
 			Game g = GameService.getGameById(Integer.parseInt(gameId));
+			List<Review> r = ReviewService.getAllReviewsByGame(g);
 			request.setAttribute("game", g);
+			request.setAttribute("reviews", r);
 			gameFound = true;
 		} else {
 			for (Game g : GameService.getAllGames()) {
 				if (g.getName().equals(search)) {
+					List<Review> r = ReviewService.getAllReviewsByGame(g);
 					request.setAttribute("game", g);
+					request.setAttribute("reviews", r);
 					gameFound = true;
 					break;
 				}

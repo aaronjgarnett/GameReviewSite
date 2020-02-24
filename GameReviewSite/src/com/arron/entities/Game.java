@@ -31,9 +31,9 @@ import javax.persistence.TemporalType;
  * 
  */
 @Entity
-@NamedQueries({ @NamedQuery(name = "Game.findTopTen", query = "SELECT g FROM Game g ORDER BY g.aggregateScore"),
+@NamedQueries({ @NamedQuery(name = "Game.findTopTen", query = "SELECT g FROM Game g ORDER BY g.aggregateScore DESC"),
 		@NamedQuery(name = "Game.findById", query = "SELECT g FROM Game g WHERE g.id = :givenID"),
-		@NamedQuery(name = "Game.findTopTenByGenre", query = "SELECT g FROM Game g INNER JOIN g.genres e WHERE e.id = :givenID ORDER BY g.aggregateScore") })
+		@NamedQuery(name = "Game.findTopTenByGenre", query = "SELECT g FROM Game g INNER JOIN g.genres e WHERE e.id = :givenID ORDER BY g.aggregateScore DESC") })
 public class Game implements Serializable {
 	private static final long serialVersionUID = 1L;
 

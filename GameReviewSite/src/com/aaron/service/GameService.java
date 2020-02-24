@@ -11,6 +11,7 @@ import java.util.List;
 import javax.persistence.Query;
 
 import com.arron.entities.Game;
+import com.arron.entities.Review;
 
 /**
  * Sevice for Game Entity
@@ -63,5 +64,18 @@ public class GameService extends MainService {
 	public static List<Game> getAllGames() {
 		Query q = em.createNamedQuery("Game.findTopTen");
 		return q.getResultList();
+	}
+
+	public static void updateScore(int id) {
+		em.getTransaction().begin();
+		Game g = em.find(Game.class, id);
+		double average = 0;
+		
+		for (Review r : ReviewService.getAllReviewsByGame(g)) {
+			average += r.getScore();
+		}
+
+		g.setAggregateScore(average / ReviewService.getAllReviewsByGame(g).size());
+		em.getTransaction().commit();
 	}
 }

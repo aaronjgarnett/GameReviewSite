@@ -9,11 +9,12 @@
 		<class>com.arron.entities.PublishingCompany</class>
 		<class>com.arron.entities.Review</class>
 		<class>com.arron.entities.User</class>
+		<class>com.aaron.entities.ContactMessage</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://localhost:3306/case_study" />
 			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="Fore80optal" />
+			<property name="javax.persistence.jdbc.password" value="" />
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.jdbc.Driver" />
 			<property name="eclipselink.logging.level" value="FINE" />

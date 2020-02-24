@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
@@ -23,8 +24,9 @@ import javax.persistence.Table;
  * 
  */
 @Entity
-@Table(name = "reviews")
-@NamedQuery(name = "Review.findAll", query = "SELECT r FROM Review r")
+@Table(name = "review")
+@NamedQueries({ @NamedQuery(name = "Review.findAll", query = "SELECT r FROM Review r"),
+		@NamedQuery(name = "Review.findAllByGame", query = "SELECT r FROM Review r WHERE r.game = :givenGame") })
 public class Review implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -39,12 +41,26 @@ public class Review implements Serializable {
 
 	// bi-directional many-to-one association to Game
 	@ManyToOne
+	@JoinColumn(name = "game")
 	private Game game;
 
 	// bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name = "author")
 	private User user;
+
+	/**
+	 * @param content
+	 * @param score
+	 * @param game
+	 * @param user
+	 */
+	public Review(String content, double score, Game game, User user) {
+		this.setContent(content);
+		this.setScore(score);
+		this.setGame(game);
+		this.setUser(user);
+	}
 
 	public Review() {
 	}

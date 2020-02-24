@@ -6,6 +6,10 @@
  * */
 package com.aaron.service;
 
+import java.util.List;
+
+import javax.persistence.Query;
+
 import com.arron.entities.PublishingCompany;
 
 /**
@@ -20,5 +24,14 @@ public class PublishingCompanyService extends MainService {
 		em.getTransaction().begin();
 		em.persist(p);
 		em.getTransaction().commit();
+	}
+
+	/**
+	 * @return q.getResultList()
+	 */
+	@SuppressWarnings("unchecked")
+	public static List<PublishingCompany> getAllPublishers() {
+		Query q = em.createNamedQuery("PublishingCompany.findAll");
+		return q.getResultList();
 	}
 }

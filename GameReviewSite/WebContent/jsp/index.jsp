@@ -58,7 +58,10 @@
 										<fmt:formatDate value="${i.date}" pattern="yyyy-MM-dd" />
 										<p>${i.description}</p>
 									</div>
-									<div class="col-sm-4 grade">${i.aggregateScore}</div>
+									<div class="col-sm-4 grade">
+										<fmt:formatNumber value="${i.aggregateScore}" type="number"
+											maxFractionDigits="1" />
+									</div>
 								</div>
 							</c:forEach>
 						</div>

@@ -34,4 +34,14 @@ public class UserService extends MainService {
 		Query q = em.createNamedQuery("User.findAll");
 		return q.getResultList();
 	}
+
+	/**
+	 * @param id
+	 * @return q.getSingleResult()
+	 */
+	public static User getUserById(int id) {
+		Query q = em.createNamedQuery("User.findById");
+		q.setParameter("givenID", id);
+		return (User) q.getSingleResult();
+	}
 }
