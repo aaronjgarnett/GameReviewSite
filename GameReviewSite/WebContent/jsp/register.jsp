@@ -35,11 +35,13 @@
 		</div>
 		<h1>CREATE AN ACCOUNT</h1>
 		<form action="RegisterModelServlet" onsubmit="return validate()"
-			method="post">
+			method="post" enctype="multipart/form-data">
 			<input type="text" name="name" value="" placeholder="Username"
 				id="username" style="width: 320px" required /> <input type="email"
 				id="email" name="email" value="" placeholder="Email"
-				style="width: 320px" required />
+				style="width: 320px" required /> <label for="avatar">Choose
+				a Profile picture (optional):</label> <input type="file" name="avatar"
+				id="avatar" value="" accept="image/png, image/jpeg" />
 			<div class="tooltip">
 				<span class="tooltiptext">You must include one number, one
 					upper-case letter, one lower-case letter, and one special

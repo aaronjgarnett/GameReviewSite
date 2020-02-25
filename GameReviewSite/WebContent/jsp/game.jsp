@@ -77,7 +77,8 @@
 				<c:forEach items="${reviews}" var="i">
 					<div class="row">
 						<div class="col-sm-12" style="margin-top: 20px">
-							<span class="glyphicon glyphicon-user"></span>${i.user.name}
+							<img src="${i.user.avatar}"
+								style="border-radius: 50%; width: 25px; height: 25px" />${i.user.name}
 							says:
 							<div class="review">
 								<p>${i.content}</p>
@@ -89,7 +90,7 @@
 								</div>
 							</div>
 							<c:if test="${loggedIn}">
-								<c:if test="${i.user.name == user}">
+								<c:if test="${i.user.name == user || isAdmin}">
 									<a href="RemoveServlet?id=${i.id}&game=${game.id}">remove</a>
 								</c:if>
 							</c:if>

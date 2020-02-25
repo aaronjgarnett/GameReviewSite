@@ -9,16 +9,27 @@
 	padding: 20px;
 	background: #fff;
 	border-radius: 5px;
-	border: 5px solid #000000;
+	border: 5px solid #258e3f;
 	margin: 0 auto;
 }
 
 .login-block h1 {
 	text-align: center;
-	color: #000;
+	color: #283;
 	font-size: 18px;
 	margin-top: 0;
 	margin-bottom: 20px;
+}
+
+.login-block label {
+	color: #283;
+	margin-top: 0;
+	margin-bottom: 4px;
+}
+
+.login-block input[type=file] {
+	padding-top: 10px;
+	color: #cfc;
 }
 
 .login-block input {
@@ -26,7 +37,7 @@
 	height: 42px;
 	box-sizing: border-box;
 	border-radius: 5px;
-	border: 1px solid #ccc;
+	border: 1px solid #cfc;
 	margin-bottom: 20px;
 	font-size: 14px;
 	padding: 0 20px 0 50px;
@@ -38,7 +49,7 @@
 	height: 42px;
 	box-sizing: border-box;
 	border-radius: 5px;
-	border: 1px solid #ccc;
+	border: 1px solid #cfc;
 	margin-bottom: 20px;
 	margin-top: 20px;
 	font-size: 14px;
@@ -51,7 +62,7 @@ textarea {
 	height: 42px;
 	box-sizing: border-box;
 	border-radius: 5px;
-	border: 1px solid #ccc;
+	border: 1px solid #cfc;
 	margin-bottom: 20px;
 	margin-top: 20px;
 	font-size: 14px;
@@ -78,7 +89,7 @@ textarea {
 .login-block button {
 	width: 100%;
 	height: 40px;
-	background: #000000;
+	background: #258e3f;
 	box-sizing: border-box;
 	border-radius: 5px;
 	border: 1px solid #000000;
@@ -120,7 +131,7 @@ th {
 	position: relative;
 	box-sizing: border-box;
 	border-radius: 5px;
-	border: 1px solid #ccc;
+	border: 1px solid #cfc;
 	width: 640px;
 }
 
@@ -129,7 +140,7 @@ th {
 	right: 0;
 	bottom: 0;
 	font-size: 1.5em;
-	border: 1px solid green;
+	border: 0.5px solid blue;
 }
 
 .error {

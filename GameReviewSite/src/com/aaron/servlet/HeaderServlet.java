@@ -18,7 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.aaron.service.GameService;
+import com.aaron.service.UserService;
 import com.arron.entities.Game;
+import com.arron.entities.User;
 
 /**
  * Servlet implementation class HeaderServlet
@@ -49,6 +51,17 @@ public class HeaderServlet extends HttpServlet {
 		if (session != null) {
 			if (session.getAttribute("user") != null) {
 				request.setAttribute("loggedIn", true);
+			}
+
+			if (session.getAttribute("admin") != null) {
+				request.setAttribute("isAdmin", true);
+			}
+			
+			for (User u : UserService.getAllUsers()) {
+				if (u.getName().equals(session.getAttribute("user"))) {
+					request.setAttribute("u", u);
+					break;
+				}
 			}
 		}
 

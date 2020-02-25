@@ -32,7 +32,7 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	private String avater;
+	private String avatar;
 
 	private String email;
 
@@ -56,6 +56,20 @@ public class User implements Serializable {
 	 * @param password
 	 */
 	public User(String email, String name, String password) {
+		this.setAvatar("images/default_avatar.png");
+		this.setEmail(email);
+		this.setName(name);
+		this.setPassword(password);
+	}
+
+	/**
+	 * @param avatar
+	 * @param email
+	 * @param name
+	 * @param password
+	 */
+	public User(String avatar, String email, String name, String password) {
+		this.setAvatar(avatar);
 		this.setEmail(email);
 		this.setName(name);
 		this.setPassword(password);
@@ -81,15 +95,15 @@ public class User implements Serializable {
 	/**
 	 * @return avatar
 	 */
-	public String getAvater() {
-		return this.avater;
+	public String getAvatar() {
+		return this.avatar;
 	}
 
 	/**
 	 * @param avater
 	 */
-	public void setAvater(String avater) {
-		this.avater = avater;
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 
 	/**

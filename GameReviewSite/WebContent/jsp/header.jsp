@@ -16,11 +16,11 @@
 <nav class="navbar navbar-inverse" style="background-color: #258e3f;">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand color-me" href="IndexServlet" target="_top">Game
+			<a class="navbar-brand" href="IndexServlet" target="_top">Game
 				Review Site</a>
 		</div>
 		<ul class="nav navbar-nav">
-			<li><a  href="IndexServlet" target="_top">Home </a></li>
+			<li><a href="IndexServlet" target="_top">Home </a></li>
 			<li><a href="AboutServlet" target="_top">About </a></li>
 			<li><a href="ContactServlet" target="_top">Contact</a></li>
 		</ul>
@@ -45,7 +45,8 @@
 						class="glyphicon glyphicon-log-in"></span>Login</a></li>
 			</c:if>
 			<c:if test="${loggedIn}">
-				<li><a><span class="glyphicon glyphicon-user"></span>Hello,
+				<li><a><img src="${u.avatar}"
+						style="border-radius: 50%; width: 25px; height: 25px" />Hello,
 						${user}</li>
 				</a>
 				<li><a href="LogoutServlet" target='_top'><span
@@ -53,4 +54,17 @@
 			</c:if>
 		</ul>
 	</div>
+	<c:if test="${isAdmin}">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="IndexServlet" target="_top">Admin
+					Controls</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="IndexServlet" target="_top">Add Game </a></li>
+				<li><a href="AboutServlet" target="_top">View Users </a></li>
+				<li><a href="ContactServlet" target="_top">View Messages</a></li>
+			</ul>
+		</div>
+	</c:if>
 </nav>

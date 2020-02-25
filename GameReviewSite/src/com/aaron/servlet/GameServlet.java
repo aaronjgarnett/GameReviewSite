@@ -76,6 +76,10 @@ public class GameServlet extends HttpServlet {
 			if (session.getAttribute("user") != null) {
 				request.setAttribute("loggedIn", true);
 			}
+
+			if (session.getAttribute("admin") != null) {
+				request.setAttribute("isAdmin", true);
+			}
 		}
 
 		rd.forward(request, response);

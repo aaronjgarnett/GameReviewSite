@@ -44,21 +44,34 @@ public class LoginModelServlet extends HttpServlet {
 		String user = request.getParameter("name");
 		String pass = request.getParameter("pass");
 		Boolean loggedIn = false;
+		Boolean isAdmin = false;
 
 		for (User u : UserService.getAllUsers()) {
-			if (u.getName().equals(user) && u.getPassword().equals(pass)) {
+			if (u.getName().equals(user) && u.getPassword().equals(pass) && !u.getIsBlocked()) {
 				loggedIn = true;
+
+				if (u.getIsAdmin()) {
+					isAdmin = true;
+				}
+
 				break;
 			}
 		}
 
 		if (loggedIn) {
-			HttpSession session = request.getSession();
-			session.setAttribute("user", user);
+			if (isAdmin) {
+				HttpSession session = request.getSession();
+				session.setAttribute("user", user);
+				session.setAttribute("admin", user);
+			} else {
+				HttpSession session = request.getSession();
+				session.setAttribute("user", user);
+			}
 
 			response.sendRedirect("IndexServlet");
 		} else {
-			request.setAttribute("loginError", "Sorry, username/password were incorrect!");
+			request.setAttribute("loginError",
+					"Sorry, username/password were incorrect! There is also a possibility that you may be blocked.");
 
 			RequestDispatcher rd = request.getRequestDispatcher("/jsp/login.jsp");
 			rd.forward(request, response);
