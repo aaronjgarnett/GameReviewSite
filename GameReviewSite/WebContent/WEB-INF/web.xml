@@ -10,11 +10,8 @@
 	<listener>
 		<listener-class>com.aaron.listener.ServletListener</listener-class>
 	</listener>
-	<context-param>
-		<description>Location to store uploaded file</description>
-		<param-name>file-upload</param-name>
-		<param-value>
-      images
-   </param-value>
-	</context-param>
+	<servlet>
+		<servlet-name>FileUpload</servlet-name>
+		<servlet-class>com.aaron.servlet.RegisterModelServlet</servlet-class>
+	</servlet>
 </web-app>

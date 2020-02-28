@@ -41,7 +41,7 @@
 				id="email" name="email" value="" placeholder="Email"
 				style="width: 320px" required /> <label for="avatar">Choose
 				a Profile picture (optional):</label> <input type="file" name="avatar"
-				id="avatar" value="" accept="image/png, image/jpeg" />
+				id="avatar" value="" accept="image/png, image/jpeg" size="50" />
 			<div class="tooltip">
 				<span class="tooltiptext">You must include one number, one
 					upper-case letter, one lower-case letter, and one special
