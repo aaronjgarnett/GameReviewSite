@@ -44,4 +44,18 @@ public class UserService extends MainService {
 		q.setParameter("givenID", id);
 		return (User) q.getSingleResult();
 	}
+
+	/**
+	 * @param id
+	 */
+	public static void updateBlockStatus(int id) {
+		em.getTransaction().begin();
+		User u = em.find(User.class, id);
+		if (u.getIsBlocked()) {
+			u.setIsBlocked(false);
+		} else {
+			u.setIsBlocked(true);
+		}
+		em.getTransaction().commit();
+	}
 }

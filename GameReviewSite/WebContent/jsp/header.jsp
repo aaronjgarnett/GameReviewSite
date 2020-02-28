@@ -45,7 +45,8 @@
 						class="glyphicon glyphicon-log-in"></span>Login</a></li>
 			</c:if>
 			<c:if test="${loggedIn}">
-				<li><a><img src="${u.avatar}"
+				<li><a href="UserServlet?id=${u.id}" target="_top"><img
+						src="${u.avatar}"
 						style="border-radius: 50%; width: 25px; height: 25px" />Hello,
 						${user}</li>
 				</a>
@@ -62,7 +63,7 @@
 			</div>
 			<ul class="nav navbar-nav">
 				<li><a href="IndexServlet" target="_top">Add Game </a></li>
-				<li><a href="AboutServlet" target="_top">View Users </a></li>
+				<li><a href="ViewUsersServlet" target="_top">View Users </a></li>
 				<li><a href="ContactServlet" target="_top">View Messages</a></li>
 			</ul>
 		</div>
