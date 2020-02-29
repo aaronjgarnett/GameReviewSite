@@ -16,10 +16,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.aaron.entities.Game;
+import com.aaron.entities.Genre;
 import com.aaron.service.GameService;
 import com.aaron.service.GenreService;
-import com.arron.entities.Game;
-import com.arron.entities.Genre;
 
 /**
  * Servlet implementation class IndexServlet

@@ -4,7 +4,7 @@
  * date: 2/24/2020 original
  * 
  * */
-package com.arron.entities;
+package com.aaron.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -20,6 +20,7 @@ public class ContactMessage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	private String author;
@@ -28,6 +29,17 @@ public class ContactMessage implements Serializable {
 
 	@Lob
 	private String message;
+
+	/**
+	 * @param author
+	 * @param email
+	 * @param message
+	 */
+	public ContactMessage(String author, String email, String message) {
+		this.author = author;
+		this.email = email;
+		this.message = message;
+	}
 
 	public ContactMessage() {
 	}

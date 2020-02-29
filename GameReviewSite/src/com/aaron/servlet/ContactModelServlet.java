@@ -1,35 +1,32 @@
 /*
- * Filename: ViewUsersServlet.java
+ * Filename: ContactModelServlet.java
  * author: Aaron Garnett
- * date: 2/28/2020 original
+ * date: 2/18/2020 original
  * 
  * */
 package com.aaron.servlet;
 
 import java.io.IOException;
-import java.util.List;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.aaron.entities.User;
-import com.aaron.service.UserService;
+import com.aaron.entities.ContactMessage;
+import com.aaron.service.ContactMessageService;
 
 /**
- * Servlet implementation class ViewUsersServlet
+ * Servlet implementation class ContactModelServlet
  */
-@WebServlet("/ViewUsersServlet")
-public class ViewUsersServlet extends HttpServlet {
+@WebServlet("/ContactModelServlet")
+public class ContactModelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ViewUsersServlet() {
+	public ContactModelServlet() {
 		super();
 	}
 
@@ -40,11 +37,13 @@ public class ViewUsersServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<User> users = UserService.getAllUsers();
-		request.setAttribute("users", users);
+		String author = request.getParameter("name");
+		String email = request.getParameter("email");
+		String message = request.getParameter("subject");
 
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/jsp/viewUsers.jsp");
-		rd.forward(request, response);
+		ContactMessageService.addContactMessage(new ContactMessage(author, email, message));
+
+		response.sendRedirect("ContactServlet");
 	}
 
 	/**

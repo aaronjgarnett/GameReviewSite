@@ -10,8 +10,8 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import com.arron.entities.Game;
-import com.arron.entities.Review;
+import com.aaron.entities.Game;
+import com.aaron.entities.Review;
 
 /**
  * Sevice for Review Entity
@@ -47,6 +47,9 @@ public class ReviewService extends MainService {
 		return q.getResultList();
 	}
 
+	/**
+	 * @param id
+	 */
 	public static void removeReview(int id) {
 		em.getTransaction().begin();
 		Review r = em.find(Review.class, id);

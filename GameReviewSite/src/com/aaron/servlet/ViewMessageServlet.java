@@ -1,7 +1,7 @@
 /*
- * Filename: ViewUsersServlet.java
+ * Filename: GameServlet.java
  * author: Aaron Garnett
- * date: 2/28/2020 original
+ * date: 2/29/2020 original
  * 
  * */
 package com.aaron.servlet;
@@ -16,20 +16,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.aaron.entities.User;
-import com.aaron.service.UserService;
+import com.aaron.entities.ContactMessage;
+import com.aaron.service.ContactMessageService;
 
 /**
- * Servlet implementation class ViewUsersServlet
+ * Servlet implementation class ViewMessageServlet
  */
-@WebServlet("/ViewUsersServlet")
-public class ViewUsersServlet extends HttpServlet {
+@WebServlet("/ViewMessageServlet")
+public class ViewMessageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ViewUsersServlet() {
+	public ViewMessageServlet() {
 		super();
 	}
 
@@ -40,10 +40,10 @@ public class ViewUsersServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<User> users = UserService.getAllUsers();
-		request.setAttribute("users", users);
+		List<ContactMessage> messages = ContactMessageService.getAllMessages();
+		request.setAttribute("messages", messages);
 
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/jsp/viewUsers.jsp");
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/jsp/viewMessages.jsp");
 		rd.forward(request, response);
 	}
 

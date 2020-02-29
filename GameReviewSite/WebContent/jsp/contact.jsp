@@ -11,7 +11,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1"
 	charset="ISO-8859-1">
-<title>Game Review Site</title>
+<title>NewGames.Reviews</title>
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
 <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
@@ -26,7 +26,7 @@
 	<div></div>
 	<div class="login-block">
 		<h1>CONTACT US</h1>
-		<form onsubmit="sendMessage()">
+		<form onsubmit="sendMessage()" action="ContactModelServlet" method="post">
 			<input type="text" name="name" value="" placeholder="Name" id="name"
 				style="width: 320px" required /> <input type="email" id="email"
 				name="email" value="" placeholder="Email" style="width: 320px"

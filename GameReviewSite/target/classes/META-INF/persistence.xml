@@ -4,17 +4,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="GameReviewSite">
-		<class>com.arron.entities.Game</class>
-		<class>com.arron.entities.Genre</class>
-		<class>com.arron.entities.PublishingCompany</class>
-		<class>com.arron.entities.Review</class>
-		<class>com.arron.entities.User</class>
+		<class>com.aaron.entities.Game</class>
+		<class>com.aaron.entities.Genre</class>
+		<class>com.aaron.entities.PublishingCompany</class>
+		<class>com.aaron.entities.Review</class>
+		<class>com.aaron.entities.User</class>
 		<class>com.aaron.entities.ContactMessage</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://localhost:3306/case_study" />
 			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="" />
+			<property name="javax.persistence.jdbc.password" value="Fore80optal" />
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.jdbc.Driver" />
 			<property name="eclipselink.logging.level" value="FINE" />

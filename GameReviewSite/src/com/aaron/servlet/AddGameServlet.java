@@ -1,7 +1,7 @@
 /*
- * Filename: ViewUsersServlet.java
+ * Filename: AddGameServlet.java
  * author: Aaron Garnett
- * date: 2/28/2020 original
+ * date: 2/29/2020 original
  * 
  * */
 package com.aaron.servlet;
@@ -16,20 +16,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.aaron.entities.User;
-import com.aaron.service.UserService;
+import com.aaron.entities.Genre;
+import com.aaron.entities.PublishingCompany;
+import com.aaron.service.GenreService;
+import com.aaron.service.PublishingCompanyService;
 
 /**
- * Servlet implementation class ViewUsersServlet
+ * Servlet implementation class AddGameServlet
  */
-@WebServlet("/ViewUsersServlet")
-public class ViewUsersServlet extends HttpServlet {
+@WebServlet("/AddGameServlet")
+public class AddGameServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ViewUsersServlet() {
+	public AddGameServlet() {
 		super();
 	}
 
@@ -40,10 +42,13 @@ public class ViewUsersServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<User> users = UserService.getAllUsers();
-		request.setAttribute("users", users);
+		List<Genre> genres = GenreService.getAllGenres();
+		request.setAttribute("genres", genres);
 
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/jsp/viewUsers.jsp");
+		List<PublishingCompany> publishers = PublishingCompanyService.getAllPublishers();
+		request.setAttribute("publishers", publishers);
+
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/jsp/gameForm.jsp");
 		rd.forward(request, response);
 	}
 

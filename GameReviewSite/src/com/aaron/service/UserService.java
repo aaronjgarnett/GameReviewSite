@@ -10,7 +10,7 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import com.arron.entities.User;
+import com.aaron.entities.User;
 
 /**
  * Sevice for User Entity
@@ -56,6 +56,17 @@ public class UserService extends MainService {
 		} else {
 			u.setIsBlocked(true);
 		}
+		em.getTransaction().commit();
+	}
+
+	/**
+	 * @param id
+	 * @param avatar
+	 */
+	public static void updateAvater(int id, String avatar) {
+		em.getTransaction().begin();
+		User u = em.find(User.class, id);
+		u.setAvatar(avatar);
 		em.getTransaction().commit();
 	}
 }

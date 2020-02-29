@@ -1,7 +1,7 @@
 /*
  * Filename: UserServlet.java
  * author: Aaron Garnett
- * date: 2/18/2020 original
+ * date: 2/28/2020 original
  * 
  * */
 package com.aaron.servlet;
@@ -14,10 +14,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import com.aaron.entities.User;
 import com.aaron.service.UserService;
-import com.arron.entities.User;
 
 /**
  * Servlet implementation class UserServlet
@@ -40,15 +39,10 @@ public class UserServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession(false);
-		if (session != null) {
-			for (User u : UserService.getAllUsers()) {
-				if (u.getName().equals(session.getAttribute("user"))) {
-					request.setAttribute("u", u);
-					break;
-				}
-			}
-		}
+		String userId = request.getParameter("id");
+
+		User user = UserService.getUserById(Integer.parseInt(userId));
+		request.setAttribute("user", user);
 
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/jsp/user.jsp");
 		rd.forward(request, response);

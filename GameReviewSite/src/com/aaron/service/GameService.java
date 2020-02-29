@@ -10,8 +10,8 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import com.arron.entities.Game;
-import com.arron.entities.Review;
+import com.aaron.entities.Game;
+import com.aaron.entities.Review;
 
 /**
  * Sevice for Game Entity

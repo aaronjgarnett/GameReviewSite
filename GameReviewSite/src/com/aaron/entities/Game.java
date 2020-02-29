@@ -4,7 +4,7 @@
  * date: 2/18/2020 original
  * 
  * */
-package com.arron.entities;
+package com.aaron.entities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -69,6 +69,24 @@ public class Game implements Serializable {
 	// bi-directional many-to-one association to Review
 	@OneToMany(mappedBy = "game")
 	private List<Review> reviews;
+
+	/**
+	 * @param cover
+	 * @param description
+	 * @param name
+	 * @param date
+	 * @param genres
+	 * @param publishingCompany
+	 */
+	public Game(String cover, String description, String name, Date date, List<Genre> genres,
+			PublishingCompany publishingCompany) {
+		this.setCover(cover);
+		this.setDescription(description);
+		this.setName(name);
+		this.setDate(date);
+		this.setGenres(genres);
+		this.setPublishingCompany(publishingCompany);
+	}
 
 	public Game() {
 	}

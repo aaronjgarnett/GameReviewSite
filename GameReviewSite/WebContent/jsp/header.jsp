@@ -16,8 +16,9 @@
 <nav class="navbar navbar-inverse" style="background-color: #258e3f;">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="IndexServlet" target="_top">Game
-				Review Site</a>
+			<a class="navbar-brand" href="IndexServlet" target="_top"><img
+				src="images/5a0752ca77b52_thumb900.jpg"
+				style="width: 150px; height: 25px" /></a>
 		</div>
 		<ul class="nav navbar-nav">
 			<li><a href="IndexServlet" target="_top">Home </a></li>
@@ -62,9 +63,10 @@
 					Controls</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li><a href="IndexServlet" target="_top">Add Game </a></li>
+				<li><a href="AddGameServlet" target="_top">Add Game </a></li>
 				<li><a href="ViewUsersServlet" target="_top">View Users </a></li>
-				<li><a href="ContactServlet" target="_top">View Messages</a></li>
+				<li><a href="ViewMessageServlet" target="_top">View
+						Messages</a></li>
 			</ul>
 		</div>
 	</c:if>

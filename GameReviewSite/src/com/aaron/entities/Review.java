@@ -4,7 +4,7 @@
  * date: 2/18/2020 original
  * 
  * */
-package com.arron.entities;
+package com.aaron.entities;
 
 import java.io.Serializable;
 

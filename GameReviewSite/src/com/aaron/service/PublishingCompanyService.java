@@ -10,7 +10,7 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import com.arron.entities.PublishingCompany;
+import com.aaron.entities.PublishingCompany;
 
 /**
  * Sevice for Publishing Company Entity

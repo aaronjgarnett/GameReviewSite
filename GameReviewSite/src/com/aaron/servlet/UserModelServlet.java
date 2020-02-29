@@ -1,7 +1,7 @@
 /*
- * Filename: RegisterModelServlet.java
+ * Filename: UserModelServlet.java
  * author: Aaron Garnett
- * date: 2/18/2020 original
+ * date: 2/29/2020 original
  * 
  * */
 package com.aaron.servlet;
@@ -10,32 +10,28 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-import com.aaron.entities.User;
 import com.aaron.service.UserService;
 
 /**
- * Servlet implementation class RegisterModelServlet
- * 
+ * Servlet implementation class UserModelServlet
  */
-@WebServlet("/RegisterModelServlet")
+@WebServlet("/UserModelServlet")
 @MultipartConfig(location = "C:\\Users\\aaron\\Documents\\GitHub\\GameReviewSite\\GameReviewSite\\WebContent")
-public class RegisterModelServlet extends HttpServlet {
+public class UserModelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public RegisterModelServlet() {
+	public UserModelServlet() {
 		super();
 	}
 
@@ -46,50 +42,20 @@ public class RegisterModelServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String user = request.getParameter("name");
-		String email = request.getParameter("email");
+		String userId = request.getParameter("id");
 		Part avatar = request.getPart("avatar");
-		String pass = request.getParameter("pass");
 		String fileName = Paths.get(avatar.getSubmittedFileName()).getFileName().toString();
 		String savePath = "uploadFiles";
-		Boolean exists = false;
 
-		for (User u : UserService.getAllUsers()) {
-			if (u.getName().equals(user) || u.getEmail().equals(pass)) {
-				exists = true;
-				break;
-			}
+		for (Part part : request.getParts()) {
+			String name = extractFileName(part);
+			name = new File(name).getName();
+			name = fileName;
+			part.write(savePath + File.separator + name);
+			UserService.updateAvater(Integer.parseInt(userId), savePath + File.separator + name);
 		}
 
-		if (!exists) {
-			if (!fileName.equals("")) {
-
-				for (Part part : request.getParts()) {
-					String name = extractFileName(part);
-					name = new File(name).getName();
-					if (name.equals("avatar")) {
-						name = fileName;
-						part.write(savePath + File.separator + name);
-						UserService.addUser(new User(savePath + File.separator + name, email, user, pass));
-					}
-				}
-
-				HttpSession session = request.getSession();
-				session.setAttribute("user", user);
-			} else {
-				UserService.addUser(new User(email, user, pass));
-
-				HttpSession session = request.getSession();
-				session.setAttribute("user", user);
-			}
-
-			response.sendRedirect("IndexServlet");
-		} else {
-			request.setAttribute("registerError", "Sorry, username/email are already being used!");
-
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/RegisterServlet");
-			rd.forward(request, response);
-		}
+		response.sendRedirect("IndexServlet?id=" + userId);
 	}
 
 	/**
