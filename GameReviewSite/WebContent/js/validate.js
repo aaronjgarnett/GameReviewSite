@@ -20,7 +20,3 @@ function addGame() {
 	'use strict';
 	return alert('Game has been added to the database!');
 };
-
-function colorGrade() {
-	'use strict';
-}

@@ -26,23 +26,31 @@
 		<iframe style="border: none;" height="100%" width="100%"
 			src="HeaderServlet"></iframe>
 	</div>
-	<div class="container p-3 my-3 border center">
-		<c:forEach items="${messages}" var="i">
-			<div class="row">
-				<div class="col-sm-12" style="margin-top: 20px">
-					Author: ${i.author} <br /> Email: ${i.email}
-					<div class="review">
-						<p>${i.message}</p>
+	<c:if test="${!messages.isEmpty()}">
+		<div class="siteLayout">
+			<div class="container">
+				<c:forEach items="${messages}" var="i">
+					<div class="row">
+						<div class="col-sm-12" style="margin-top: 20px">
+							Author: ${i.author} <br /> Email: ${i.email}
+							<div class="review">
+								<p>${i.message}</p>
+							</div>
+							<a href="DeleteServlet?id=${i.id}">delete message</a>
+						</div>
 					</div>
-					<a href="DeleteServlet?id=${i.id}">delete message</a>
-				</div>
+				</c:forEach>
 			</div>
-		</c:forEach>
-	</div>
+		</div>
+	</c:if>
 	<c:if test="${messages.isEmpty()}">
 		<div class="jumbotron">
 			<h1 class="display-4">There are no Messages</h1>
 		</div>
 	</c:if>
+	<div class="footer">
+		<iframe style="border: none;" height="100%" width="100%"
+			src="FooterServlet"></iframe>
+	</div>
 </body>
 </html>

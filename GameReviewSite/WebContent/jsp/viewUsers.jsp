@@ -50,5 +50,9 @@
 			</div>
 		</div>
 	</div>
+	<div class="footer">
+		<iframe style="border: none;" height="100%" width="100%"
+			src="FooterServlet"></iframe>
+	</div>
 </body>
 </html>

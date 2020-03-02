@@ -23,18 +23,24 @@
 		<iframe style="border: none;" height="100%" width="100%"
 			src="HeaderServlet"></iframe>
 	</div>
-	<div></div>
-	<div class="login-block">
-		<h1>CONTACT US</h1>
-		<form onsubmit="sendMessage()" action="ContactModelServlet" method="post">
-			<input type="text" name="name" value="" placeholder="Name" id="name"
-				style="width: 320px" required /> <input type="email" id="email"
-				name="email" value="" placeholder="Email" style="width: 320px"
-				required />
-			<textarea id="subject" name="subject" placeholder="Enter Message"
-				style="width: 320px; height: 125px" required></textarea>
-			<button type="submit">Submit</button>
-		</form>
+	<div class="siteLayout">
+		<div class="login-block">
+			<h1>CONTACT US</h1>
+			<form onsubmit="sendMessage()" action="ContactModelServlet"
+				method="post">
+				<input type="text" name="name" value="" placeholder="Name" id="name"
+					style="width: 320px" required /> <input type="email" id="email"
+					name="email" value="" placeholder="Email" style="width: 320px"
+					required />
+				<textarea id="subject" name="subject" placeholder="Enter Message"
+					style="width: 320px; height: 125px" required></textarea>
+				<button type="submit">Submit</button>
+			</form>
+		</div>
+	</div>
+	<div class="footer">
+		<iframe style="border: none;" height="100%" width="100%"
+			src="FooterServlet"></iframe>
 	</div>
 </body>
 </html>

@@ -18,13 +18,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.aaron.config.UtilityConfig;
 import com.aaron.service.UserService;
 
 /**
  * Servlet implementation class UserModelServlet
  */
 @WebServlet("/UserModelServlet")
-@MultipartConfig(location = "C:\\Users\\aaron\\Documents\\GitHub\\GameReviewSite\\GameReviewSite\\WebContent")
+@MultipartConfig(location = UtilityConfig.USER_AARON)
 public class UserModelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -48,7 +49,7 @@ public class UserModelServlet extends HttpServlet {
 		String savePath = "uploadFiles";
 
 		for (Part part : request.getParts()) {
-			String name = extractFileName(part);
+			String name = UtilityConfig.EXTRACT_FILENAME(part);
 			name = new File(name).getName();
 			name = fileName;
 			part.write(savePath + File.separator + name);
@@ -66,20 +67,5 @@ public class UserModelServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
-	}
-
-	/**
-	 * @param part
-	 * @return file name from HTTP header content-disposition
-	 */
-	private String extractFileName(Part part) {
-		String contentDisp = part.getHeader("content-disposition");
-		String[] items = contentDisp.split(";");
-		for (String s : items) {
-			if (s.trim().startsWith("name")) {
-				return s.substring(s.indexOf("=") + 2, s.length() - 1);
-			}
-		}
-		return "";
 	}
 }

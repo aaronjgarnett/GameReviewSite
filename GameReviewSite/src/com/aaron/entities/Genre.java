@@ -37,6 +37,15 @@ public class Genre implements Serializable {
 	@ManyToMany(mappedBy = "genres")
 	private List<Game> games;
 
+	/**
+	 * @param name
+	 * @param games
+	 */
+	public Genre(String name, List<Game> games) {
+		this.setName(name);
+		this.setGames(games);
+	}
+
 	public Genre() {
 	}
 
@@ -98,5 +107,39 @@ public class Genre implements Serializable {
 		builder.append(games);
 		builder.append("]");
 		return builder.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((games == null) ? 0 : games.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Genre other = (Genre) obj;
+		if (games == null) {
+			if (other.games != null)
+				return false;
+		} else if (!games.equals(other.games))
+			return false;
+		if (id != other.id)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
 	}
 }

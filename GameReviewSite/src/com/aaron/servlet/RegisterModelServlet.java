@@ -20,7 +20,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import com.aaron.config.UtilityConfig;
 import com.aaron.entities.User;
+import com.aaron.exceptions.ValidationException;
 import com.aaron.service.UserService;
 
 /**
@@ -28,7 +30,7 @@ import com.aaron.service.UserService;
  * 
  */
 @WebServlet("/RegisterModelServlet")
-@MultipartConfig(location = "C:\\Users\\aaron\\Documents\\GitHub\\GameReviewSite\\GameReviewSite\\WebContent")
+@MultipartConfig(location = UtilityConfig.USER_AARON)
 public class RegisterModelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -48,13 +50,15 @@ public class RegisterModelServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String user = request.getParameter("name");
 		String email = request.getParameter("email");
-		Part avatar = request.getPart("avatar");
 		String pass = request.getParameter("pass");
+		Part avatar = request.getPart("avatar");
 		String fileName = Paths.get(avatar.getSubmittedFileName()).getFileName().toString();
 		String savePath = "uploadFiles";
 		Boolean exists = false;
 
-		for (User u : UserService.getAllUsers()) {
+		for (
+
+		User u : UserService.getAllUsers()) {
 			if (u.getName().equals(user) || u.getEmail().equals(pass)) {
 				exists = true;
 				break;
@@ -65,7 +69,7 @@ public class RegisterModelServlet extends HttpServlet {
 			if (!fileName.equals("")) {
 
 				for (Part part : request.getParts()) {
-					String name = extractFileName(part);
+					String name = UtilityConfig.EXTRACT_FILENAME(part);
 					name = new File(name).getName();
 					if (name.equals("avatar")) {
 						name = fileName;
@@ -100,20 +104,5 @@ public class RegisterModelServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
-	}
-
-	/**
-	 * @param part
-	 * @return file name from HTTP header content-disposition
-	 */
-	private String extractFileName(Part part) {
-		String contentDisp = part.getHeader("content-disposition");
-		String[] items = contentDisp.split(";");
-		for (String s : items) {
-			if (s.trim().startsWith("name")) {
-				return s.substring(s.indexOf("=") + 2, s.length() - 1);
-			}
-		}
-		return "";
 	}
 }

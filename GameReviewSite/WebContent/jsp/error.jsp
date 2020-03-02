@@ -27,5 +27,9 @@
 		<p class="lead">The game you searched for does not exist within
 			our database, we are sorry. Please try again.</p>
 	</div>
+	<div class="footer">
+		<iframe style="border: none;" height="100%" width="100%"
+			src="FooterServlet"></iframe>
+	</div>
 </body>
 </html>

@@ -25,21 +25,26 @@
 		<iframe style="border: none;" height="100%" width="100%"
 			src="HeaderServlet"></iframe>
 	</div>
-	<div></div>
-	<div class="login-block">
-		<div class="error">
-			<c:if test="${not empty loginError}">
+	<div class="siteLayout">
+		<div class="login-block">
+			<div class="error">
+				<c:if test="${not empty loginError}">
 				${loginError}
 			</c:if>
+			</div>
+			<h1>LOGIN</h1>
+			<form action="LoginModelServlet" method="post">
+				<input type="text" name="name" value="" placeholder="Username"
+					id="username" style="width: 320px" required /> <input
+					type="password" id="password" name="pass" value=""
+					placeholder="Password" style="width: 320px" required />
+				<button>Login</button>
+			</form>
 		</div>
-		<h1>LOGIN</h1>
-		<form action="LoginModelServlet" method="post">
-			<input type="text" name="name" value="" placeholder="Username"
-				id="username" style="width: 320px" required /> <input
-				type="password" id="password" name="pass" value=""
-				placeholder="Password" style="width: 320px" required />
-			<button>Login</button>
-		</form>
+	</div>
+	<div class="footer">
+		<iframe style="border: none;" height="100%" width="100%"
+			src="FooterServlet"></iframe>
 	</div>
 </body>
 </html>

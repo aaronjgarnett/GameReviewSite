@@ -21,6 +21,7 @@
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="css/style.css" />
 <script src="js/validate.js" type="text/javascript"></script>
+<script src="js/color-change.js" type="text/javascript"></script>
 </head>
 <body>
 	<div id="header">
@@ -29,7 +30,8 @@
 	</div>
 	<div class="siteLayout">
 		<div id="mainPage" class="mainDiv">
-			<div class="container p-3 my-3 border center">
+			<div class="container"
+				style="background-color: rgba(255, 255, 255, 1)">
 				<div class="row">
 					<div class="col-sm-12">
 						<h1>${game.name}</h1>
@@ -99,6 +101,10 @@
 				</c:forEach>
 			</div>
 		</div>
+	</div>
+	<div class="footer">
+		<iframe style="border: none;" height="100%" width="100%"
+			src="FooterServlet"></iframe>
 	</div>
 </body>
 </body>

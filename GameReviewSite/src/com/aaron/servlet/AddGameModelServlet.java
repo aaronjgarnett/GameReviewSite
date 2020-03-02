@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.aaron.config.UtilityConfig;
 import com.aaron.entities.Game;
 import com.aaron.entities.Genre;
 import com.aaron.entities.PublishingCompany;
@@ -34,7 +35,7 @@ import com.aaron.service.PublishingCompanyService;
  * Servlet implementation class AddGameModelServlet
  */
 @WebServlet("/AddGameModelServlet")
-@MultipartConfig(location = "C:\\Users\\aaron\\Documents\\GitHub\\GameReviewSite\\GameReviewSite\\WebContent")
+@MultipartConfig(location = UtilityConfig.USER_AARON)
 public class AddGameModelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -88,7 +89,7 @@ public class AddGameModelServlet extends HttpServlet {
 
 		if (!exists) {
 			for (Part part : request.getParts()) {
-				String name = extractFileName(part);
+				String name = UtilityConfig.EXTRACT_FILENAME(part);
 				name = new File(name).getName();
 				if (name.equals("cover")) {
 					name = fileName;
@@ -119,20 +120,5 @@ public class AddGameModelServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
-	}
-
-	/**
-	 * @param part
-	 * @return file name from HTTP header content-disposition
-	 */
-	private String extractFileName(Part part) {
-		String contentDisp = part.getHeader("content-disposition");
-		String[] items = contentDisp.split(";");
-		for (String s : items) {
-			if (s.trim().startsWith("name")) {
-				return s.substring(s.indexOf("=") + 2, s.length() - 1);
-			}
-		}
-		return "";
 	}
 }

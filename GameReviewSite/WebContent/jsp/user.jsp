@@ -28,7 +28,7 @@
 	</div>
 	<div class="siteLayout">
 		<div id="mainPage" class="mainDiv">
-			<div class="container">
+			<div class="container" style="background-color: rgba(255, 255, 255, 1)">
 				<div class="row">
 					<div class="col-sm-2" style="margin-top: 20px">
 						<img src="${user.avatar}"
@@ -49,6 +49,10 @@
 				</form>
 			</div>
 		</div>
+	</div>
+	<div class="footer">
+		<iframe style="border: none;" height="100%" width="100%"
+			src="FooterServlet"></iframe>
 	</div>
 </body>
 </html>

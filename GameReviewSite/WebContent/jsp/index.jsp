@@ -21,6 +21,7 @@
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="css/style.css" />
 <script src="js/validate.js" type="text/javascript"></script>
+<script src="js/color-change.js" type="text/javascript"></script>
 </head>
 <body>
 	<div id="header">
@@ -69,6 +70,10 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="footer">
+		<iframe style="border: none;" height="100%" width="100%"
+			src="FooterServlet"></iframe>
 	</div>
 </body>
 </html>
