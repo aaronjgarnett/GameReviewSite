@@ -30,7 +30,7 @@ import com.aaron.service.UserService;
  * 
  */
 @WebServlet("/RegisterModelServlet")
-@MultipartConfig(location = UtilityConfig.USER_AARON)
+@MultipartConfig(location = UtilityConfig.USER_CTSTUDENT)
 public class RegisterModelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -56,13 +56,14 @@ public class RegisterModelServlet extends HttpServlet {
 		String savePath = "uploadFiles";
 		Boolean exists = false;
 
-		for (
+		try {
+			validatePassword(pass);
+		} catch (ValidationException e) {
+			e.printStackTrace();
+		}
 
-		User u : UserService.getAllUsers()) {
-			if (u.getName().equals(user) || u.getEmail().equals(pass)) {
-				exists = true;
-				break;
-			}
+		if (UserService.getAllUsers().stream().anyMatch(u -> u.getName().equals(user) || u.getEmail().equals(pass))) {
+			exists = true;
 		}
 
 		if (!exists) {
@@ -104,5 +105,13 @@ public class RegisterModelServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
+	}
+
+	public static void validatePassword(String pass) throws ValidationException {
+		if (!pass.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})")) {
+			throw new ValidationException("Exception: Your password must include one number, one\r\n"
+					+ "						upper-case letter, one lower-case letter, and one special\r\n"
+					+ "						character. The password must also be at least 8 characters long.");
+		}
 	}
 }

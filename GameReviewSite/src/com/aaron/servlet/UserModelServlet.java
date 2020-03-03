@@ -25,7 +25,7 @@ import com.aaron.service.UserService;
  * Servlet implementation class UserModelServlet
  */
 @WebServlet("/UserModelServlet")
-@MultipartConfig(location = UtilityConfig.USER_AARON)
+@MultipartConfig(location = UtilityConfig.USER_CTSTUDENT)
 public class UserModelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -56,7 +56,7 @@ public class UserModelServlet extends HttpServlet {
 			UserService.updateAvater(Integer.parseInt(userId), savePath + File.separator + name);
 		}
 
-		response.sendRedirect("IndexServlet?id=" + userId);
+		response.sendRedirect("UserServlet?id=" + userId);
 	}
 
 	/**

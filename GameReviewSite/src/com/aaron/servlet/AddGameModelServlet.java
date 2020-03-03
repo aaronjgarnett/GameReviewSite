@@ -35,7 +35,7 @@ import com.aaron.service.PublishingCompanyService;
  * Servlet implementation class AddGameModelServlet
  */
 @WebServlet("/AddGameModelServlet")
-@MultipartConfig(location = UtilityConfig.USER_AARON)
+@MultipartConfig(location = UtilityConfig.USER_CTSTUDENT)
 public class AddGameModelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -66,11 +66,8 @@ public class AddGameModelServlet extends HttpServlet {
 		List<Genre> gameGenre = new ArrayList<>();
 		PublishingCompany publishingCompany = new PublishingCompany();
 
-		for (Game g : GameService.getAllGames()) {
-			if (g.getName().equals(gameName)) {
-				exists = true;
-				break;
-			}
+		if (GameService.getAllGames().stream().anyMatch(g -> g.getName().equals(gameName))) {
+			exists = true;
 		}
 
 		for (Genre e : GenreService.getAllGenres()) {

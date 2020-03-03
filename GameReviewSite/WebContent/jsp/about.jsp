@@ -16,6 +16,8 @@
 <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="css/style.css" />
+<script src="js/validate.js" type="text/javascript"></script>
+<script src="js/color-change.js" type="text/javascript"></script>
 </head>
 <body>
 	<div id="header">

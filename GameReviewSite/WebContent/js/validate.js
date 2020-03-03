@@ -18,5 +18,5 @@ function sendMessage() {
 
 function addGame() {
 	'use strict';
-	return alert('Game has been added to the database!');
+	return alert('Game will be added to the database!');
 };
