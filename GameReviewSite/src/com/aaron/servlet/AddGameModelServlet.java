@@ -35,7 +35,7 @@ import com.aaron.service.PublishingCompanyService;
  * Servlet implementation class AddGameModelServlet
  */
 @WebServlet("/AddGameModelServlet")
-@MultipartConfig(location = UtilityConfig.USER_CTSTUDENT)
+@MultipartConfig(location = UtilityConfig.USER_AARON)
 public class AddGameModelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

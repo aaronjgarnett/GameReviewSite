@@ -259,16 +259,15 @@ public class Game implements Serializable {
 		builder.append(name);
 		builder.append(", date=");
 		builder.append(date);
-		builder.append(", genres=");
-		builder.append(genres);
-		builder.append(", publishingCompany=");
-		builder.append(publishingCompany);
-		builder.append(", reviews=");
-		builder.append(reviews);
 		builder.append("]");
 		return builder.toString();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -279,14 +278,16 @@ public class Game implements Serializable {
 		result = prime * result + ((cover == null) ? 0 : cover.hashCode());
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((genres == null) ? 0 : genres.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((publishingCompany == null) ? 0 : publishingCompany.hashCode());
-		result = prime * result + ((reviews == null) ? 0 : reviews.hashCode());
 		return result;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -313,27 +314,12 @@ public class Game implements Serializable {
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (genres == null) {
-			if (other.genres != null)
-				return false;
-		} else if (!genres.equals(other.genres))
-			return false;
 		if (id != other.id)
 			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
-			return false;
-		if (publishingCompany == null) {
-			if (other.publishingCompany != null)
-				return false;
-		} else if (!publishingCompany.equals(other.publishingCompany))
-			return false;
-		if (reviews == null) {
-			if (other.reviews != null)
-				return false;
-		} else if (!reviews.equals(other.reviews))
 			return false;
 		return true;
 	}

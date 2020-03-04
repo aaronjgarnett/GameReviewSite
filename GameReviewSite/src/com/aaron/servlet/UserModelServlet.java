@@ -25,7 +25,7 @@ import com.aaron.service.UserService;
  * Servlet implementation class UserModelServlet
  */
 @WebServlet("/UserModelServlet")
-@MultipartConfig(location = UtilityConfig.USER_CTSTUDENT)
+@MultipartConfig(location = UtilityConfig.USER_AARON)
 public class UserModelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
