@@ -52,8 +52,7 @@
 						<p>Java EE Technology was decidedly used to make this website.
 							Specifically these technologies were used:</p>
 						<ul>
-							<li><strong>Java Persistance API (JPA)</strong> (Now called
-								<strong>Jakarta Persistence</strong>)</li>
+							<li><strong>Java Persistance API (JPA)</strong></li>
 							<li><strong>Enterprise JavaBeans (EJB)</strong> (for JPA)</li>
 							<li>MySQL</li>
 							<li>Java <strong>Sevlets</strong></li>
