@@ -30,8 +30,7 @@
 	</div>
 	<div class="siteLayout">
 		<div id="mainPage" class="mainDiv">
-			<div class="container"
-				style="background-color: rgba(255, 255, 255, 1)">
+			<div class="container">
 				<div class="row">
 					<div class="col-sm-12">
 						<h1>${game.name}</h1>

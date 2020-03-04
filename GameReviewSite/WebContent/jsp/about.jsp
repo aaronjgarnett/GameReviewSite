@@ -42,11 +42,9 @@
 				<h1>Technology</h1>
 				<div class="row">
 					<div class="col-sm-7">
-						<img src="images/javaee.jpg"
-							title="From book: Java EE 7 Essentials by Arun Gupta"
-							style="height: 300px; width: 600px" /> <img
-							src="images/jpa_class_level_architecture.png" title="JPA Diagram" />
-						<img src="images/600px-JSPLife.png" title="A JSP Life" />
+						<img src="images/jpa_class_level_architecture.png"
+							title="JPA Diagram" /> <img src="images/600px-JSPLife.png"
+							title="A JSP Life" />
 						<h2>My Database</h2>
 						<img src="images/ReviewSiteERD.png" />
 					</div>
